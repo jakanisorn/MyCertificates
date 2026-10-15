@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Certificates Portfolio</title>
+<meta name="description" content="A categorised collection of certificates with a learning dashboard.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234f46e5'/%3E%3Cpath d='M32 14l5.6 11.4 12.6 1.8-9.1 8.9 2.1 12.5L32 42.6 20.8 48.6l2.1-12.5-9.1-8.9 12.6-1.8z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+
+<header class="top">
+  <div class="wrap top-in">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">★</span>
+      <div>
+        <h1 id="ownerName">Certificates</h1>
+        <p id="tagline" class="muted"></p>
+      </div>
+    </div>
+    <div class="top-actions">
+      <nav class="tabs" role="tablist" aria-label="Sections">
+        <button role="tab" id="tab-dash" data-tab="dashboard" aria-selected="true" data-i18n="tabDash">Dashboard</button>
+        <button role="tab" id="tab-certs" data-tab="certificates" aria-selected="false" data-i18n="tabCerts">Certificates</button>
+      </nav>
+      <div id="extraLinks" class="links"></div>
+      <button id="langBtn" class="pill" aria-label="Switch language">TH</button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <!-- DASHBOARD -->
+  <section id="view-dashboard" aria-labelledby="tab-dash">
+    <div id="kpis" class="kpis"></div>
+
+    <div class="grid2">
+      <article class="card">
+        <h2 data-i18n="byCategory">Certificates by category</h2>
+        <p class="muted small" data-i18n="clickHint">Click a category to browse its certificates.</p>
+        <div class="donut-row">
+          <div id="donut" class="donut" role="img" aria-label="Category distribution"></div>
+          <ul id="catBars" class="bars"></ul>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2 data-i18n="latest">Latest certificates</h2>
+        <p class="muted small" data-i18n="latestHint">The 20 most recent. Click one to open it.</p>
+        <ul id="latest" class="latest"></ul>
+      </article>
+    </div>
+
+    <article class="card">
+      <div class="card-head">
+        <div>
+          <h2 data-i18n="timeline">Learning timeline</h2>
+          <p class="muted small" data-i18n="timelineHint">Certificates earned per month.</p>
+        </div>
+        <div id="yearChips" class="year-chips"></div>
+      </div>
+      <div id="timeline" class="timeline"></div>
+    </article>
+
+    <div class="grid2">
+      <article class="card">
+        <h2 data-i18n="hoursByCat">Learning hours by category</h2>
+        <p class="muted small" data-i18n="hoursHint">Only counts certificates that state their duration.</p>
+        <ul id="hourBars" class="bars"></ul>
+      </article>
+      <article class="card">
+        <h2 data-i18n="topIssuers">Top providers</h2>
+        <p class="muted small" data-i18n="issuerHint">Platforms and institutions where the certificates came from.</p>
+        <ul id="issuerBars" class="bars"></ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- CERTIFICATES -->
+  <section id="view-certificates" hidden aria-labelledby="tab-certs">
+    <div class="toolbar">
+      <label class="search">
+        <span class="sr" data-i18n="search">Search</span>
+        <input id="q" type="search" placeholder="Search title, provider…" autocomplete="off">
+      </label>
+      <label class="sel"><span class="sr" data-i18n="provider">Provider</span>
+        <select id="fIssuer"></select></label>
+      <label class="sel"><span class="sr" data-i18n="year">Year</span>
+        <select id="fYear"></select></label>
+      <label class="sel"><span class="sr" data-i18n="sort">Sort</span>
+        <select id="fSort"></select></label>
+      <button id="viewBtn" class="pill" aria-label="Toggle view"></button>
+    </div>
+    <div id="chips" class="chips" role="group" aria-label="Categories"></div>
+    <p id="count" class="muted small" aria-live="polite"></p>
+    <div id="list" class="cards"></div>
+    <div id="empty" class="empty" hidden>
+      <p data-i18n="noMatch">No certificates match your filters.</p>
+      <button id="resetBtn" class="pill" data-i18n="reset">Reset filters</button>
+    </div>
+  </section>
+</main>
+
+<footer class="foot wrap">
+  <p class="muted small"><span data-i18n="footer">Certificates are shown as issued by their providers. Click any card to view the original PDF.</span></p>
+</footer>
+
+<!-- Viewer -->
+<div id="modal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div class="m-titles">
+        <h3 id="mTitle"></h3>
+        <p id="mSub" class="muted small"></p>
+      </div>
+      <div class="m-actions">
+        <button id="mPrev" class="icon" aria-label="Previous">‹</button>
+        <button id="mNext" class="icon" aria-label="Next">›</button>
+        <a id="mOpen" class="pill" target="_blank" rel="noopener" data-i18n="open">Open</a>
+        <a id="mDl" class="pill" download data-i18n="download">Download</a>
+        <button id="mClose" class="icon" aria-label="Close">✕</button>
+      </div>
+    </div>
+    <div id="mBody" class="modal-body"></div>
+  </div>
+</div>
+
+<script src="data/config.js"></script>
+<script src="data/certificates.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/add.js"></script>
+</body>
+</html>
