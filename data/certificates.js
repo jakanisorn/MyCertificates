@@ -2242,5 +2242,17 @@ window.CERTIFICATES = [
   "platform": "CognitiveClass.ai",
   "date": "2026-10-14",
   "hours": 11
+ },
+ {
+  "id": 188,
+  "file": "certificates/188.pdf",
+  "thumb": "thumbs/188.jpg",
+  "en": "AI Social Content Creation Process",
+  "th": "กระบวนการสร้างเนื้อหาทางสังคม AI",
+  "cat": "AI & Machine Learning",
+  "issuer": "MYONGJI College",
+  "platform": "K-MOOC",
+  "date": "2026-10-15",
+  "hours": 16
  }
 ];
