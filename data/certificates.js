@@ -2254,5 +2254,29 @@ window.CERTIFICATES = [
   "platform": "K-MOOC",
   "date": "2026-10-15",
   "hours": 16
+ },
+ {
+  "id": 189,
+  "file": "certificates/189.pdf",
+  "thumb": "thumbs/189.jpg",
+  "en": "Data Science Methodology",
+  "th": "ระเบียบวิธีวิทยาการข้อมูล",
+  "cat": "AI & Machine Learning",
+  "issuer": "IBM Developer Skills Network",
+  "platform": "CognitiveClass.ai",
+  "date": "2026-10-16",
+  "hours": null
+ },
+ {
+  "id": 190,
+  "file": "certificates/190.pdf",
+  "thumb": "thumbs/190.jpg",
+  "en": "Data Science Tools",
+  "th": "เครื่องมือวิทยาศาสตร์ข้อมูล",
+  "cat": "Data & Analytics",
+  "issuer": "IBM Developer Skills Network",
+  "platform": "CognitiveClass.ai",
+  "date": "2026-10-16",
+  "hours": null
  }
 ];
