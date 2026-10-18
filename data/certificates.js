@@ -2278,5 +2278,41 @@ window.CERTIFICATES = [
   "platform": "CognitiveClass.ai",
   "date": "2026-10-16",
   "hours": null
+ },
+ {
+  "id": 191,
+  "file": "certificates/191.pdf",
+  "thumb": "thumbs/191.jpg",
+  "en": "Claude 101",
+  "th": null,
+  "cat": "AI & Machine Learning",
+  "issuer": "Anthoropic",
+  "platform": "Claude Academy",
+  "date": "2026-10-18",
+  "hours": 2.5
+ },
+ {
+  "id": 192,
+  "file": "certificates/192.pdf",
+  "thumb": "thumbs/192.jpg",
+  "en": "Claude Code 101",
+  "th": null,
+  "cat": "AI & Machine Learning",
+  "issuer": "Anthoropic",
+  "platform": "Claude Academy",
+  "date": "2026-10-18",
+  "hours": 1.5
+ },
+ {
+  "id": 193,
+  "file": "certificates/193.pdf",
+  "thumb": "thumbs/193.jpg",
+  "en": "Introduction to Claude Cowork",
+  "th": "ความรู้เบื้องต้นเกี่ยวกับ Claude Cowork",
+  "cat": "AI & Machine Learning",
+  "issuer": "Anthoropic",
+  "platform": "Claude Academy",
+  "date": "2026-10-18",
+  "hours": 2.5
  }
 ];
