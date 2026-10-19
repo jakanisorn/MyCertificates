@@ -2314,5 +2314,65 @@ window.CERTIFICATES = [
   "platform": "Claude Academy",
   "date": "2026-10-18",
   "hours": 2.5
+ },
+ {
+  "id": 194,
+  "file": "certificates/194.pdf",
+  "thumb": "thumbs/194.jpg",
+  "en": "Coding for Data",
+  "th": "การเข้ารหัสสำหรับข้อมูล",
+  "cat": "Data & Analytics",
+  "issuer": "Sololearn",
+  "platform": "Sololearn",
+  "date": "2026-10-19",
+  "hours": null
+ },
+ {
+  "id": 195,
+  "file": "certificates/195.pdf",
+  "thumb": "thumbs/195.jpg",
+  "en": "Claude Code in Action",
+  "th": "ประมวลกฎหมายคลอดระหว่างดำเนินการ",
+  "cat": "AI & Machine Learning",
+  "issuer": "Anthoropic",
+  "platform": "Claude Academy",
+  "date": "2026-10-19",
+  "hours": 1
+ },
+ {
+  "id": 196,
+  "file": "certificates/196.pdf",
+  "thumb": "thumbs/196.jpg",
+  "en": "Claude Platform 101",
+  "th": "ความรู้เบื้องต้นเกี่ยวกับ Claude Cowork",
+  "cat": "AI & Machine Learning",
+  "issuer": "Anthoropic",
+  "platform": "Claude Academy",
+  "date": "2026-10-19",
+  "hours": 1
+ },
+ {
+  "id": 197,
+  "file": "certificates/197.pdf",
+  "thumb": "thumbs/197.jpg",
+  "en": "Introduction to Model Context Protocol",
+  "th": "บทนำสู่โมเดลโครงการบริบท",
+  "cat": "AI & Machine Learning",
+  "issuer": "Anthoropic",
+  "platform": "Claude Academy",
+  "date": "2026-10-19",
+  "hours": 1
+ },
+ {
+  "id": 198,
+  "file": "certificates/198.pdf",
+  "thumb": "thumbs/198.jpg",
+  "en": "Introduction to GitHub Copilot",
+  "th": "ความรู้เบื้องต้นเกี่ยวกับ GitHub Copilot",
+  "cat": "AI & Machine Learning",
+  "issuer": "Microsoft",
+  "platform": "Microsoft Learn",
+  "date": "2026-10-13",
+  "hours": 0.25
  }
 ];
