@@ -61,6 +61,7 @@
       req: "Required.", badDate: "Choose a valid date.", badHours: "Enter a number, or leave empty.",
       dup: "A certificate with the same title and date is already on the site. Click again to add it anyway.",
       cancel: "Cancel", save: "Save certificate", translating: "Translating…", autoTh: "Translated to Thai automatically — please check it.", saveChoose: "Choose folder and save", saveChanges: "Save changes", editBtn: "Edit", editTitle: "Edit certificate", editNote: "Only the details change. The PDF itself stays as it is.", thumbSet: "New preview image selected.", editNotFound: function (id) { return "Certificate #" + id + " was not found in data/certificates.js."; }, doneEditTitle: "Changes saved", doneEditFolder: "The details were updated in your website folder and on this page.", doneEditDl: "Updated on this page for now. To keep the change, put the downloaded certificates.js into your website’s data folder (replace the old one).", saveAnyway: "Save anyway", saving: "Saving…",
+      delBtn: "Delete", delAsk: "Delete this certificate?", delWhat: "It will be removed from the website. Its PDF and preview image will be deleted from your website folder. The original PDF in your own folder is not touched.", delWhatDl: "It will be removed from this page. Because this browser can’t change your folder, you will need to delete its files by hand afterwards.", delKeep: "Keep it", delYes: "Yes, delete", deleting: "Deleting…", doneDelTitle: "Certificate deleted", doneDelFolder: "Removed from your website folder and from this page. The previous list was saved as data/certificates.backup.js.", doneDelDl: "Removed from this page for now. To keep the change, put the downloaded certificates.js into your website’s data folder (replace the old one).", doneDelLeft: "Delete these files by hand:", doneDelKept: "These files could not be deleted automatically:", doneDelGit: "If the site is already online, open GitHub Desktop, commit and push to remove it there too.",
       doneTitle: "Certificate added", doneFolder: "Saved to your website folder. It is already on the page.", doneFiles: "Files written:",
       doneDownload: "It is on this page for now, but to keep it, place the three downloaded files in your website folder:",
       doneDl1: function (id) { return "<b>" + id + ".pdf</b> → the <b>certificates</b> folder"; },
@@ -101,6 +102,7 @@
       req: "จำเป็นต้องกรอก", badDate: "เลือกวันที่ให้ถูกต้อง", badHours: "กรอกตัวเลข หรือเว้นว่าง",
       dup: "มีใบประกาศนียบัตรที่ชื่อและวันที่เดียวกันอยู่แล้ว คลิกอีกครั้งเพื่อเพิ่มต่อไป",
       cancel: "ยกเลิก", save: "บันทึกใบประกาศนียบัตร", translating: "กำลังแปล…", autoTh: "แปลเป็นภาษาไทยอัตโนมัติ — โปรดตรวจสอบ", saveChoose: "เลือกโฟลเดอร์และบันทึก", saveChanges: "บันทึกการแก้ไข", editBtn: "แก้ไข", editTitle: "แก้ไขใบประกาศนียบัตร", editNote: "แก้ไขเฉพาะรายละเอียด ไฟล์ PDF จะไม่เปลี่ยน", thumbSet: "เลือกภาพตัวอย่างใหม่แล้ว", editNotFound: function (id) { return "ไม่พบใบประกาศนียบัตรหมายเลข " + id + " ใน data/certificates.js"; }, doneEditTitle: "บันทึกการแก้ไขแล้ว", doneEditFolder: "อัปเดตรายละเอียดในโฟลเดอร์เว็บไซต์และในหน้านี้แล้ว", doneEditDl: "อัปเดตในหน้านี้ชั่วคราว หากต้องการเก็บการแก้ไข ให้นำไฟล์ certificates.js ที่ดาวน์โหลดไปวางในโฟลเดอร์ data ของเว็บไซต์ (แทนที่ไฟล์เดิม)", saveAnyway: "บันทึกต่อไป", saving: "กำลังบันทึก…",
+      delBtn: "ลบ", delAsk: "ลบใบประกาศนียบัตรนี้?", delWhat: "จะถูกนำออกจากเว็บไซต์ และไฟล์ PDF กับภาพตัวอย่างจะถูกลบออกจากโฟลเดอร์เว็บไซต์ ส่วนไฟล์ PDF ต้นฉบับในโฟลเดอร์ของคุณจะไม่ถูกแตะต้อง", delWhatDl: "จะถูกนำออกจากหน้านี้ เนื่องจากเบราว์เซอร์นี้แก้ไขโฟลเดอร์ของคุณไม่ได้ คุณต้องลบไฟล์ของมันด้วยตัวเองภายหลัง", delKeep: "เก็บไว้", delYes: "ยืนยัน ลบ", deleting: "กำลังลบ…", doneDelTitle: "ลบใบประกาศนียบัตรแล้ว", doneDelFolder: "นำออกจากโฟลเดอร์เว็บไซต์และหน้านี้แล้ว รายการก่อนหน้าถูกบันทึกไว้ที่ data/certificates.backup.js", doneDelDl: "นำออกจากหน้านี้ชั่วคราว หากต้องการเก็บการเปลี่ยนแปลง ให้นำไฟล์ certificates.js ที่ดาวน์โหลดไปวางในโฟลเดอร์ data ของเว็บไซต์ (แทนที่ไฟล์เดิม)", doneDelLeft: "ลบไฟล์เหล่านี้ด้วยตัวเอง:", doneDelKept: "ลบไฟล์เหล่านี้โดยอัตโนมัติไม่ได้:", doneDelGit: "หากเว็บไซต์ออนไลน์อยู่แล้ว ให้เปิด GitHub Desktop แล้ว commit และ push เพื่อนำออกจากที่นั่นด้วย",
       doneTitle: "เพิ่มใบประกาศนียบัตรแล้ว", doneFolder: "บันทึกลงโฟลเดอร์เว็บไซต์แล้ว และแสดงในหน้านี้เรียบร้อย", doneFiles: "ไฟล์ที่เขียนลงโฟลเดอร์:",
       doneDownload: "ตอนนี้แสดงในหน้านี้ชั่วคราว หากต้องการเก็บไว้ ให้นำไฟล์ 3 ไฟล์ที่ดาวน์โหลดไปวางในโฟลเดอร์เว็บไซต์:",
       doneDl1: function (id) { return "<b>" + id + ".pdf</b> → โฟลเดอร์ <b>certificates</b>"; },
@@ -295,6 +297,66 @@
     return Object.keys(m).sort(function (a, b) { return m[b] - m[a]; });
   }
 
+  /* ---------- delete ---------- */
+  function askDelete() {
+    var rec = st.editing; if (!rec || st.busy) return;
+    var box = $("#addDelBox"), direct = HAS_FS;
+    box.innerHTML = '<h5 id="addDelAsk">' + esc(T("delAsk")) + '</h5><p><b>' + esc(rec.en || "") + '</b></p><p class="muted small">' + esc(direct ? T("delWhat") : T("delWhatDl")) + '</p>' +
+      '<div class="add-foot"><button type="button" class="pill" id="addDelKeep">' + esc(T("delKeep")) + '</button><button type="button" class="pill danger solid" id="addDelYes">' + esc(T("delYes")) + '</button></div>';
+    box.hidden = false; $("#addFoot").hidden = true; $("#addWarn").hidden = true;
+    $("#addDelKeep").addEventListener("click", function () { box.hidden = true; $("#addFoot").hidden = false; $("#addDelete").focus(); });
+    $("#addDelYes").addEventListener("click", deleteCert);
+    $("#addDelKeep").focus();
+  }
+  async function removeSiteFile(dir, path) {
+    if (!/^(certificates|thumbs)\/[^\/\\]+$/.test(path)) return false;
+    var parts = path.split("/"), d = await dir.getDirectoryHandle(parts[0]);
+    await d.removeEntry(parts[1]); return true;
+  }
+  async function deleteCert() {
+    var rec0 = st.editing; if (!rec0 || st.busy) return;
+    if (HAS_FS) {
+      if (!dirHandle && restoreP) await restoreP;
+      if (!dirHandle) { await pickFolder(); if (!dirHandle) return; }
+    }
+    st.busy = true; var yes = $("#addDelYes"), keep = $("#addDelKeep"); yes.disabled = true; keep.disabled = true; yes.textContent = T("deleting");
+    try {
+      var id = rec0.id, direct = HAS_FS && dirHandle, gone = [], left = [];
+      if (direct) {
+        if (!(await ensurePermission(dirHandle))) throw new Error(T("folderDenied"));
+        var cur = await readData(dirHandle), rec = cur.arr.filter(function (c) { return c.id === id; })[0];
+        if (!rec) throw new Error(T("editNotFound")(id));
+        try { await writeTo(dirHandle, ["data", "certificates.backup.js"], new Blob([cur.text], { type: "text/javascript" })); } catch (e) {}
+        var rest = cur.arr.filter(function (c) { return c.id !== id; });
+        await writeTo(dirHandle, ["data", "certificates.js"], new Blob([serialise(rest)], { type: "text/javascript" }));
+        var paths = [rec.file, rec.thumb].filter(Boolean);
+        for (var i = 0; i < paths.length; i++) {
+          var p = paths[i];
+          if (rest.some(function (c) { return c.file === p || c.thumb === p; })) continue; // still used by another record
+          try { if (await removeSiteFile(dirHandle, p)) gone.push(p); }
+          catch (e) { if (!e || e.name !== "NotFoundError") left.push(p); }
+        }
+      } else {
+        var all = A.data().map(cleanRec).filter(function (c) { return c.id !== id; });
+        download(new Blob([serialise(all)], { type: "text/javascript" }), "certificates.js");
+        left = [rec0.file, rec0.thumb].filter(Boolean).map(function (p) { return p.split("?")[0]; });
+      }
+      A.remove(id);
+      st.busy = false;
+      $("#addForm").hidden = true; $("#addFolder").parentNode.hidden = true;
+      var d = $("#addDone"); d.hidden = false;
+      var list = function (arr) { return "<ul class='steps'>" + arr.map(function (x) { return "<li><code>" + esc(x) + "</code></li>"; }).join("") + "</ul>"; };
+      d.innerHTML = '<div class="done"><div class="tick">✓</div><h4>' + esc(T("doneDelTitle")) + "</h4><p><b>" + esc(rec0.en || "") + "</b></p><p class='muted'>" + esc(direct ? T("doneDelFolder") : T("doneDelDl")) + "</p>" +
+        (left.length ? "<p class='muted small'>" + esc(direct ? T("doneDelKept") : T("doneDelLeft")) + "</p>" + list(left) : "") +
+        "<p class='muted small'>" + esc(T("doneDelGit")) + '</p><div class="add-foot"><button type="button" class="pill primary" id="addEditClose">' + esc(T("close")) + "</button></div></div>";
+      $("#addEditClose").addEventListener("click", close); $("#addEditClose").focus();
+    } catch (e) {
+      st.busy = false; var box = $("#addDelBox");
+      box.hidden = true; $("#addFoot").hidden = false;
+      var w = $("#addWarn"); w.textContent = T("errSave")(e && e.message ? e.message : e); w.hidden = false;
+    }
+  }
+
   function openEdit(rec) {
     if (!modal) build();
     resetState(); st.editing = rec; render();
@@ -303,7 +365,7 @@
     $("#fDate").value = rec.date || ""; $("#fPlat").value = rec.platform || "";
     $("#fIss").value = rec.issuer && rec.issuer !== rec.platform ? rec.issuer : "";
     $("#fHrs").value = rec.hours != null ? rec.hours : "";
-    $("#addWill").textContent = T("editNote"); $("#hThumb").textContent = rec.thumb ? "" : T("thumbNone");
+    $("#addDelete").hidden = false; $("#addWill").textContent = T("editNote"); $("#hThumb").textContent = rec.thumb ? "" : T("thumbNone");
     modal.hidden = false; document.body.style.overflow = "hidden"; $("#fEn").focus();
     if (HAS_FS && !dirHandle) restoreP = Promise.all([idb("readonly", function (s) { return s.get("dir"); }), idb("readonly", function (s) { return s.get("orig"); })]).then(function (r) { if (r[0] && !dirHandle) dirHandle = r[0]; if (r[1] && !origHandle) origHandle = r[1]; paintFolder(); });
   }
@@ -369,7 +431,8 @@
       '<div class="field"><label for="fThumb">' + esc(T("thumbOwn")) + '</label><input id="fThumb" type="file" accept="image/*"><small class="help" id="hThumb"></small></div>' +
       '</div>' +
       '<p class="muted small" id="addWill"></p><p class="warn" id="addWarn" role="alert" hidden></p>' +
-      '<div class="add-foot"><button type="button" class="pill" id="addCancel">' + esc(T("cancel")) + '</button><button type="submit" class="pill primary" id="addSave">' + esc(saveLabel()) + '</button></div></form>' +
+      '<div class="del-box" id="addDelBox" role="alertdialog" aria-labelledby="addDelAsk" hidden></div>' +
+      '<div class="add-foot" id="addFoot"><button type="button" class="pill danger" id="addDelete" hidden>' + esc(T("delBtn")) + '</button><button type="button" class="pill" id="addCancel">' + esc(T("cancel")) + '</button><button type="submit" class="pill primary" id="addSave">' + esc(saveLabel()) + '</button></div></form>' +
       '<div id="addDone" hidden></div>';
     paintFolder();
     $("#addFile").addEventListener("change", function (e) { if (e.target.files.length) pickFiles(e.target.files); });
@@ -379,6 +442,7 @@
     drop.addEventListener("drop", function (e) { var fl = e.dataTransfer && e.dataTransfer.files; if (fl && fl.length) pickFiles(fl); });
     drop.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); $("#addFile").click(); } });
     $("#addCancel").addEventListener("click", close);
+    $("#addDelete").addEventListener("click", askDelete);
     $("#addForm").addEventListener("submit", function (e) { e.preventDefault(); save(); });
     $("#fEn").addEventListener("change", maybeTranslate);
     $("#fTh").addEventListener("input", function () { st.thAuto = false; $("#hTh").hidden = true; });
@@ -453,18 +517,19 @@
   }
 
   /* ---------- automatic Thai title ---------- */
-  var autoTr = CFG.autoTranslate !== false, trCache = {}, trTool = null;
+  var autoTr = CFG.autoTranslate !== false, trCache = {}, trTool = null, trSkip = false;
   async function translateTh(text) {
     if (trCache[text]) return trCache[text];
     var out = null;
     function limit(pr, ms) { return Promise.race([pr, new Promise(function (_, rej) { setTimeout(function () { rej(new Error("timeout")); }, ms); })]); }
     try { // 1) Chrome's on-device translator (private, works offline once its language pack is installed)
-      if (window.Translator && window.Translator.create) {
+      if (!trSkip && window.Translator && window.Translator.create) {
         var o = { sourceLanguage: "en", targetLanguage: "th" };
         var av = await limit(window.Translator.availability(o), 2000);
         if (av === "available") { trTool = trTool || await limit(window.Translator.create(o), 4000); out = await limit(trTool.translate(text), 6000); }
+        else trSkip = true;
       }
-    } catch (e) { out = null; }
+    } catch (e) { out = null; trSkip = true; }
     if (!out) { // 2) free online service
       var timer;
       try {

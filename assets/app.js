@@ -10,7 +10,7 @@
       byCategory: "Certificates by category", clickHint: "Click a category to browse its certificates.",
       topIssuers: "Top providers", issuerHint: "Platforms and institutions where the certificates came from.",
       timeline: "Learning timeline", timelineHint: "What you studied and when, and how busy each month was.",
-      tlWhat: "What you studied, and when — one row per category", tlSize: "Certificates in a month:", tlBusiest: "Busiest month", tlActive: "Active months", tlOf: function (a, b) { return a + " of " + b; }, tlTotal: "total", tlAdded: function (n) { return "+" + n + (n === 1 ? " certificate" : " certificates"); }, tlFewer: "Fewer", tlMore: "More", tlTable: "Show as table", tlHeat: "Certificates per month (click a month to see them)", tlGrowth: "Running total", tlMonth: "Month", tlCount: "Certificates", tlCum: "Total so far", tlMore2: function (n) { return "+" + n + " more"; },
+      tlWhat: "What you studied, and when — one row per category", tlSize: "Certificates in a month:", tlBusiest: "Busiest month", tlActive: "Active months", tlOf: function (a, b) { return a + " of " + b; }, tlTotal: "total", tlAdded: function (n) { return "+" + n + (n === 1 ? " certificate" : " certificates"); }, tlFewer: "Fewer", tlMore: "More", tlTable: "Show as table", tlHeat: "Certificates per month (click a month to see them)", tlGrowth: "Running total", tlMonth: "Month", tlCount: "Certificates", tlCum: "Total so far", tlMore2: function (n) { return "+" + n + " more"; }, tlHours: "Hours", tlCats: "Categories", tlCsv: "Download CSV", tlSeeAll: "See these in Certificates", tlExp: "Show certificates", tlNum: function (n) { return n + (n === 1 ? " certificate" : " certificates"); }, tlSum: "Total", tlRows: function (n) { return n + (n === 1 ? " month" : " months"); }, tlNoHrs: "No duration stated", tlTitles: "Titles",
       hoursByCat: "Learning hours by category", hoursHint: "Only counts certificates that state their duration.",
       latest: "Latest certificates", latestHint: "The 20 most recent. Click one to open it.", search: "Search", provider: "Provider", year: "Year", sort: "Sort",
       searchPh: "Search title, provider…", allProviders: "All providers", allYears: "All years", allCats: "All",
@@ -29,7 +29,7 @@
       byCategory: "ใบประกาศนียบัตรแยกตามหมวดหมู่", clickHint: "คลิกหมวดหมู่เพื่อดูใบประกาศนียบัตรในหมวดนั้น",
       topIssuers: "แหล่งที่มาหลัก", issuerHint: "แพลตฟอร์มและสถาบันที่ออกใบประกาศนียบัตร",
       timeline: "ไทม์ไลน์การเรียนรู้", timelineHint: "เรียนอะไรบ้าง เมื่อไร และแต่ละเดือนเรียนหนักแค่ไหน",
-      tlWhat: "เรียนอะไรบ้าง และเมื่อไร — หนึ่งแถวต่อหนึ่งหมวดหมู่", tlSize: "จำนวนใบในหนึ่งเดือน:", tlBusiest: "เดือนที่เรียนมากที่สุด", tlActive: "เดือนที่มีการเรียน", tlOf: function (a, b) { return a + " จาก " + b; }, tlTotal: "รวม", tlAdded: function (n) { return "+" + n + " ใบ"; }, tlFewer: "น้อย", tlMore: "มาก", tlTable: "แสดงเป็นตาราง", tlHeat: "จำนวนใบต่อเดือน (คลิกเดือนเพื่อดูรายการ)", tlGrowth: "จำนวนสะสม", tlMonth: "เดือน", tlCount: "จำนวนใบ", tlCum: "สะสมถึงตอนนี้", tlMore2: function (n) { return "และอีก " + n + " ใบ"; },
+      tlWhat: "เรียนอะไรบ้าง และเมื่อไร — หนึ่งแถวต่อหนึ่งหมวดหมู่", tlSize: "จำนวนใบในหนึ่งเดือน:", tlBusiest: "เดือนที่เรียนมากที่สุด", tlActive: "เดือนที่มีการเรียน", tlOf: function (a, b) { return a + " จาก " + b; }, tlTotal: "รวม", tlAdded: function (n) { return "+" + n + " ใบ"; }, tlFewer: "น้อย", tlMore: "มาก", tlTable: "แสดงเป็นตาราง", tlHeat: "จำนวนใบต่อเดือน (คลิกเดือนเพื่อดูรายการ)", tlGrowth: "จำนวนสะสม", tlMonth: "เดือน", tlCount: "จำนวนใบ", tlCum: "สะสมถึงตอนนี้", tlMore2: function (n) { return "และอีก " + n + " ใบ"; }, tlHours: "ชั่วโมง", tlCats: "หมวดหมู่", tlCsv: "ดาวน์โหลด CSV", tlSeeAll: "ดูรายการเหล่านี้ในหน้าใบประกาศนียบัตร", tlExp: "แสดงรายการใบประกาศนียบัตร", tlNum: function (n) { return n + " ใบ"; }, tlSum: "รวม", tlRows: function (n) { return n + " เดือน"; }, tlNoHrs: "ไม่ระบุระยะเวลา", tlTitles: "รายชื่อ",
       hoursByCat: "ชั่วโมงเรียนแยกตามหมวดหมู่", hoursHint: "นับเฉพาะใบประกาศนียบัตรที่ระบุจำนวนชั่วโมง",
       latest: "ใบประกาศนียบัตรล่าสุด", latestHint: "ล่าสุด 20 ใบ คลิกเพื่อเปิดดู", search: "ค้นหา", provider: "แหล่งที่มา", year: "ปี", sort: "เรียงลำดับ",
       searchPh: "ค้นหาชื่อหลักสูตร หรือแหล่งที่มา…", allProviders: "ทุกแหล่งที่มา", allYears: "ทุกปี", allCats: "ทั้งหมด",
@@ -316,11 +316,85 @@
     });
 
     // table view
-    var det = el("details", { class: "tl-table" });
-    var rows = "", run = 0;
-    keys.forEach(function (k) { var p = k.split("-"); run += mCount[k]; rows += "<tr><td>" + esc(fmtMonth(+p[0], +p[1] - 1)) + "</td><td>" + mCount[k] + "</td><td>" + run + "</td></tr>"; });
-    det.innerHTML = "<summary>" + esc(t("tlTable")) + "</summary><table><thead><tr><th>" + esc(t("tlMonth")) + "</th><th>" + esc(t("tlCount")) + "</th><th>" + esc(t("tlCum")) + "</th></tr></thead><tbody>" + rows + "</tbody></table>";
-    box.appendChild(det);
+    buildTable(box, keys);
+  }
+  /* ---------- timeline table ---------- */
+  var TT = { open: false, sort: "month", dir: "desc", exp: {} };
+  function buildTable(box, keys) {
+    var run = 0, maxN = 0;
+    var rows = keys.map(function (k) {
+      var items = DATA.filter(function (c) { return c.date.slice(0, 7) === k; }).sort(function (a, b) { return b._d - a._d; });
+      run += items.length; if (items.length > maxN) maxN = items.length;
+      var cc = countBy(items, function (c) { return c.cat; });
+      return { k: k, y: k.slice(0, 4), label: fmtMonth(+k.slice(0, 4), +k.slice(5, 7) - 1), n: items.length, hrs: items.reduce(function (s, c) { return s + (c.hours || 0); }, 0), cum: run, items: items,
+        cats: Object.keys(cc).sort(function (a, b) { return cc[b] - cc[a]; }).map(function (n) { return [n, cc[n]]; }) };
+    });
+    var yearSum = {}; rows.forEach(function (r) { var y = yearSum[r.y] = yearSum[r.y] || { n: 0, h: 0 }; y.n += r.n; y.h += r.hrs; });
+    var totN = rows.reduce(function (s, r) { return s + r.n; }, 0), totH = rows.reduce(function (s, r) { return s + r.hrs; }, 0);
+    var yl = function (y) { return String(lang === "th" ? +y + 543 : y); };
+
+    var det = el("details", { class: "tl-table" }); det.open = TT.open;
+    det.addEventListener("toggle", function () { TT.open = det.open; });
+
+    function th(key, label, cls) {
+      var on = TT.sort === key, arrow = on ? (TT.dir === "asc" ? " ▲" : " ▼") : "";
+      return '<th scope="col" class="' + (cls || "") + '"' + (on ? ' aria-sort="' + (TT.dir === "asc" ? "ascending" : "descending") + '"' : "") + '><button type="button" class="tt-sort" data-sort="' + key + '">' + esc(label) + arrow + "</button></th>";
+    }
+    function catDots(r) {
+      return r.cats.map(function (c) { return '<span class="tt-cat" title="' + esc(catName(c[0]) + " · " + c[1]) + '"><i style="background:' + (CAT_COLOR[c[0]] || "var(--muted)") + '"></i>' + c[1] + "</span>"; }).join("");
+    }
+    function paint() {
+      var list = rows.slice(), dir = TT.dir === "asc" ? 1 : -1;
+      list.sort(function (a, b) {
+        var d = TT.sort === "n" ? a.n - b.n : TT.sort === "h" ? a.hrs - b.hrs : (a.k < b.k ? -1 : a.k > b.k ? 1 : 0);
+        return (d || (a.k < b.k ? -1 : 1)) * dir;
+      });
+      var h = '<summary>' + esc(t("tlTable")) + ' <span class="tt-n">· ' + esc(t("tlRows")(rows.length)) + '</span></summary>' +
+        '<div class="tt-bar"><button type="button" class="pill tt-csv" data-csv="1">⬇ ' + esc(t("tlCsv")) + '</button></div>' +
+        '<div class="tt-wrap"><table class="tt"><thead><tr><th class="x"><span class="sr">' + esc(t("tlExp")) + "</span></th>" +
+        th("month", t("tlMonth")) + th("n", t("tlCount"), "num") + th("h", t("tlHours"), "num") + '<th scope="col">' + esc(t("tlCats")) + '</th><th scope="col" class="num">' + esc(t("tlCum")) + "</th></tr></thead><tbody>";
+      var lastY = null;
+      list.forEach(function (r) {
+        if (TT.sort === "month" && r.y !== lastY) {
+          lastY = r.y; var ys = yearSum[r.y];
+          h += '<tr class="yr"><th colspan="6" scope="colgroup">' + esc(yl(r.y)) + ' <span>· ' + esc(t("tlNum")(ys.n)) + (ys.h ? " · " + esc(fmtHours(ys.h)) : "") + "</span></th></tr>";
+        }
+        var open = !!TT.exp[r.k];
+        h += '<tr class="mr' + (open ? " is-open" : "") + '"><td class="x"><button type="button" class="tt-x" data-exp="' + r.k + '" aria-expanded="' + open + '" aria-label="' + esc(t("tlExp") + ": " + r.label) + '">▸</button></td>' +
+          '<td><button type="button" class="tt-lk" data-month="' + r.k + '">' + esc(r.label) + "</button></td>" +
+          '<td class="num"><span class="tt-b" style="--w:' + (r.n / maxN).toFixed(3) + '"></span><b>' + r.n + "</b></td>" +
+          '<td class="num">' + (r.hrs ? esc(fmtHours(r.hrs)) : '<span class="muted" title="' + esc(t("tlNoHrs")) + '">–</span>') + "</td>" +
+          '<td class="cats">' + catDots(r) + '</td><td class="num muted">' + r.cum + "</td></tr>";
+        if (open) {
+          h += '<tr class="ex"><td></td><td colspan="5"><ul>' + r.items.map(function (c) {
+            return '<li><button type="button" class="tt-cert" data-open="' + c.id + '" data-month="' + r.k + '"><i style="background:' + (CAT_COLOR[c.cat] || "var(--muted)") + '"></i>' + esc(title(c)) + '</button><span class="muted">' + esc([c.issuer || c.platform, c.hours ? fmtHours(c.hours) : ""].filter(Boolean).join(" · ")) + "</span></li>";
+          }).join("") + '</ul><button type="button" class="link" data-month="' + r.k + '" data-go="1">' + esc(t("tlSeeAll")) + " →</button></td></tr>";
+        }
+      });
+      h += '</tbody><tfoot><tr><th></th><th scope="row">' + esc(t("tlSum")) + '</th><td class="num"><b>' + totN + '</b></td><td class="num">' + (totH ? esc(fmtHours(totH)) : "") + "</td><td></td><td></td></tr></tfoot></table></div>";
+      det.innerHTML = h;
+    }
+    det.addEventListener("click", function (e) {
+      var x = e.target.closest("button"); if (!x) return;
+      if (x.hasAttribute("data-sort")) {
+        var k = x.getAttribute("data-sort");
+        if (TT.sort === k) TT.dir = TT.dir === "asc" ? "desc" : "asc"; else { TT.sort = k; TT.dir = "desc"; }
+        paint(); var nb = det.querySelector('[data-sort="' + k + '"]'); if (nb) nb.focus();
+      } else if (x.hasAttribute("data-exp")) {
+        var m = x.getAttribute("data-exp"); TT.exp[m] = !TT.exp[m]; paint(); var nx = det.querySelector('[data-exp="' + m + '"]'); if (nx) nx.focus();
+      } else if (x.hasAttribute("data-open")) {
+        var mk = x.getAttribute("data-month"), r = rows.filter(function (q) { return q.k === mk; })[0]; openModal(+x.getAttribute("data-open"), r ? r.items : null);
+      } else if (x.hasAttribute("data-month")) {
+        goMonth(x.getAttribute("data-month"));
+      } else if (x.hasAttribute("data-csv")) {
+        var q = function (v) { v = String(v == null ? "" : v); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; };
+        var lines = [[t("tlMonth"), t("tlCount"), t("tlHours"), t("tlCats"), t("tlTitles")].map(q).join(",")];
+        rows.forEach(function (r) { lines.push([r.k, r.n, r.hrs ? +r.hrs.toFixed(2) : "", r.cats.map(function (c) { return c[0] + " (" + c[1] + ")"; }).join("; "), r.items.map(title).join("; ")].map(q).join(",")); });
+        var a = document.createElement("a"); a.href = URL.createObjectURL(new Blob(["﻿" + lines.join("\r\n")], { type: "text/csv;charset=utf-8" })); a.download = "certificates-by-month.csv";
+        document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1500);
+      }
+    });
+    paint(); box.appendChild(det);
   }
   var rzT, lastW = 0;
   window.addEventListener("resize", function () { clearTimeout(rzT); rzT = setTimeout(function () { var b = $("#timeline"); if (b && b.clientWidth && Math.abs(b.clientWidth - lastW) > 8) { lastW = b.clientWidth; hideTip(); renderTimeline(); } }, 150); });
@@ -470,6 +544,12 @@
       var c = DATA.filter(function (x) { return x.id === id; })[0]; if (!c) return;
       for (var k in patch) c[k] = patch[k];
       prep(c); renderAll(); if (!$("#modal").hidden) renderModal();
+    },
+    remove: function (id) {
+      var i = DATA.findIndex(function (x) { return x.id === id; }); if (i < 0) return;
+      DATA.splice(i, 1);
+      if (!$("#modal").hidden) closeModal();
+      renderAll();
     },
     open: function (id) { showTab("certificates"); S = { cat: "", q: "", issuer: "", year: "", sort: "new" }; syncControls(); applyFilters(); openModal(id, filtered); }
   };
