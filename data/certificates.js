@@ -2374,5 +2374,29 @@ window.CERTIFICATES = [
   "platform": "Microsoft Learn",
   "date": "2026-10-13",
   "hours": 0.25
+ },
+ {
+  "id": 199,
+  "file": "certificates/199.pdf",
+  "thumb": "thumbs/199.jpg",
+  "en": "Introduction to SQL",
+  "th": "ความรู้เบื้องต้นเกี่ยวกับ SQL",
+  "cat": "Data & Analytics",
+  "issuer": "Sololearn",
+  "platform": "Sololearn",
+  "date": "2026-10-20",
+  "hours": null
+ },
+ {
+  "id": 200,
+  "file": "certificates/200.pdf",
+  "thumb": "thumbs/200.jpg",
+  "en": "Introduction to Claude Tag",
+  "th": "บทนำสู่แท็กคลอด",
+  "cat": "AI & Machine Learning",
+  "issuer": "Anthoropic",
+  "platform": "Claude Academy",
+  "date": "2026-10-20",
+  "hours": 2.5
  }
 ];
