@@ -1,7 +1,18 @@
 (function () {
   "use strict";
-  var DATA = (window.CERTIFICATES || []).slice();
+  var ALL = (window.CERTIFICATES || []).slice();   // every record (certificates + badges)
   var CFG = window.SITE_CONFIG || {};
+  // Badges are kept apart from certificates. Set  badges: false  in data/config.js to merge them back.
+  function badgesOn() { return CFG.badges !== false; }
+  function isBadge(c) { return badgesOn() && c.type === "badge"; }
+  var DATA = [], BADGES = [], kind = "cert";
+  function split() {
+    DATA = ALL.filter(function (c) { return !isBadge(c); });
+    BADGES = ALL.filter(isBadge);
+    if (!BADGES.length) kind = "cert";
+  }
+  function pool() { return kind === "badge" ? BADGES : kind === "all" ? ALL : DATA; }
+  function goKind(k) { kind = k; buildFilters(); }
 
   /* ---------- i18n ---------- */
   var UI = {
@@ -18,7 +29,7 @@
       noMatch: "No certificates match your filters.", reset: "Reset filters",
       footer: "Certificates are shown as issued by their providers. Click any card to view the original PDF.",
       open: "Open", download: "Download", close: "Close", prev: "Previous", next: "Next",
-      kTotal: "Certificates", kCats: "Categories", kProv: "Providers", kHours: "Learning hours", kSpan: "Years active", kLast: "Latest",
+      kTotal: "Certificates", kBadges: "Badges", kAll: "All", tabCertsA: "Credentials", byCategoryA: "Certificates & badges by category", clickHintA: "Click a category to browse everything in it.", latestA: "Latest of all", latestHintA: "The 20 most recent certificates and badges. Click one to open it.", hoursByCatA: "Learning hours by category (all)", hoursHintA: "Counts certificates and badges that state their duration.", topIssuersA: "Top providers (all)", issuerHintA: "Platforms and institutions behind your certificates and badges.", kindLabel: "Show", kindCert: "Certificates", kindBadge: "Badges", verify: "Verify", badgeTag: "Badge", noMatchB: "No badges match your filters.", showingB: function (n, t) { return "Showing " + n + " of " + t + " badges"; }, showingA: function (n, t) { return "Showing " + n + " of " + t + " items"; }, kCats: "Categories", kProv: "Providers", kHours: "Learning hours", kSpan: "Years active", kLast: "Latest",
       showing: function (n, t) { return "Showing " + n + " of " + t + " certificates"; },
       hrs: "h", min: "m", viewGrid: "List view", viewList: "Grid view", certs: "certificates",
       pdfFallback: "Your browser can't preview PDFs here.", noHours: "n/a", perMonth: function (m, n) { return m + ": " + n + (n === 1 ? " certificate" : " certificates"); },
@@ -37,7 +48,7 @@
       noMatch: "ไม่พบใบประกาศนียบัตรที่ตรงกับตัวกรอง", reset: "ล้างตัวกรอง",
       footer: "ใบประกาศนียบัตรแสดงตามที่ผู้ให้บริการออกให้ คลิกที่การ์ดเพื่อดูไฟล์ PDF ต้นฉบับ",
       open: "เปิด", download: "ดาวน์โหลด", close: "ปิด", prev: "ก่อนหน้า", next: "ถัดไป",
-      kTotal: "ใบประกาศนียบัตร", kCats: "หมวดหมู่", kProv: "แหล่งที่มา", kHours: "ชั่วโมงเรียน", kSpan: "ปีที่เรียน", kLast: "ล่าสุด",
+      kTotal: "ใบประกาศนียบัตร", kBadges: "แบดจ์", kAll: "ทั้งหมด", tabCertsA: "ใบรับรองและแบดจ์", byCategoryA: "ใบประกาศนียบัตรและแบดจ์แยกตามหมวดหมู่", clickHintA: "คลิกหมวดหมู่เพื่อดูรายการทั้งหมดในหมวดนั้น", latestA: "ล่าสุดทั้งหมด", latestHintA: "ใบประกาศนียบัตรและแบดจ์ล่าสุด 20 รายการ คลิกเพื่อเปิดดู", hoursByCatA: "ชั่วโมงเรียนแยกตามหมวดหมู่ (ทั้งหมด)", hoursHintA: "นับใบประกาศนียบัตรและแบดจ์ที่ระบุจำนวนชั่วโมง", topIssuersA: "แหล่งที่มาหลัก (ทั้งหมด)", issuerHintA: "แพลตฟอร์มและสถาบันที่ออกใบประกาศนียบัตรและแบดจ์", kindLabel: "แสดง", kindCert: "ใบประกาศนียบัตร", kindBadge: "แบดจ์", verify: "ตรวจสอบ", badgeTag: "แบดจ์", noMatchB: "ไม่พบแบดจ์ที่ตรงกับตัวกรอง", showingB: function (n, t) { return "แสดง " + n + " จาก " + t + " รายการ"; }, showingA: function (n, t) { return "แสดง " + n + " จาก " + t + " รายการ"; }, kCats: "หมวดหมู่", kProv: "แหล่งที่มา", kHours: "ชั่วโมงเรียน", kSpan: "ปีที่เรียน", kLast: "ล่าสุด",
       showing: function (n, t) { return "แสดง " + n + " จาก " + t + " ใบ"; },
       hrs: " ชม.", min: " นาที", viewGrid: "มุมมองรายการ", viewList: "มุมมองตาราง", certs: "ใบ",
       pdfFallback: "เบราว์เซอร์นี้ไม่รองรับการแสดง PDF ในหน้านี้", noHours: "-", perMonth: function (m, n) { return m + ": " + n + " ใบ"; },
@@ -101,7 +112,7 @@
   function prep(c) { c._s = searchText(c); c._y = c.date.slice(0, 4); c._d = pd(c.date).getTime(); return c; }
   var NOTHUMB = "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 368"><rect width="520" height="368" fill="#e7e9f3"/><path d="M260 120l22 45 50 7-36 35 8 50-44-24-44 24 8-50-36-35 50-7z" fill="#b4b9d3"/></svg>');
   function thumbSrc(c) { return c.thumb || NOTHUMB; }
-  DATA.forEach(prep);
+  ALL.forEach(prep); split();
 
   /* ---------- state ---------- */
   var S = { cat: "", q: "", issuer: "", year: "", sort: "new" };
@@ -110,7 +121,7 @@
   /* ---------- static text ---------- */
   function applyI18n() {
     document.documentElement.lang = lang;
-    $$("[data-i18n]").forEach(function (n) { var v = t(n.getAttribute("data-i18n")); if (typeof v === "string") n.textContent = v; });
+    $$("[data-i18n]").forEach(function (n) { var key = n.getAttribute("data-i18n"), v = (BADGES.length && UI[lang][key + "A"]) || t(key); if (typeof v === "string") n.textContent = v; });
     $("#q").placeholder = t("searchPh");
     $("#langBtn").textContent = lang === "th" ? "EN" : "TH";
     $("#ownerName").textContent = (lang === "th" && CFG.ownerTh) ? CFG.ownerTh : (CFG.owner || "Certificates");
@@ -136,19 +147,23 @@
     li.appendChild(b); return li;
   }
   function renderDash() {
-    var total = DATA.length;
-    var byCat = countBy(DATA, function (c) { return c.cat; });
+    var total = ALL.length;
+    var byCat = countBy(ALL, function (c) { return c.cat; });
     var catList = CATS.map(function (c) { return [c[0], byCat[c[0]] || 0]; }).filter(function (x) { return x[1] > 0; }).sort(function (a, b) { return b[1] - a[1]; });
-    var issuers = countBy(DATA, function (c) { return c.platform; });
-    var hours = DATA.reduce(function (s, c) { return s + (c.hours || 0); }, 0);
-    var years = Object.keys(countBy(DATA, function (c) { return c._y; })).sort();
-    var latest = DATA.slice().sort(function (a, b) { return b._d - a._d; });
+    var issuers = countBy(ALL, function (c) { return c.platform; });
+    var hours = ALL.reduce(function (s, c) { return s + (c.hours || 0); }, 0);
+    var years = Object.keys(countBy(ALL, function (c) { return c._y; })).sort();
+    var latest = ALL.slice().sort(function (a, b) { return b._d - a._d; });
 
     var k = $("#kpis"); k.innerHTML = "";
-    [[total, t("kTotal"), true], [catList.length, t("kCats")], [Object.keys(issuers).length, t("kProv")],
-     [Math.round(hours), t("kHours")], [years.length ? (years[0] === years[years.length - 1] ? years[0] : years[0] + "–" + years[years.length - 1]) : "-", t("kSpan")],
-     [latest[0] ? fmtDate(latest[0].date) : "-", t("kLast")]].forEach(function (x) {
-      var d = el("div", { class: "kpi" + (x[2] ? " accent" : "") }); d.innerHTML = "<b>" + esc(x[0]) + "</b><span>" + esc(x[1]) + "</span>"; k.appendChild(d);
+    var kp = [[DATA.length, t("kTotal"), true, BADGES.length ? goCerts : null], [catList.length, t("kCats")], [Object.keys(issuers).length, t("kProv"), false, function () { if (window.CertProviders) window.CertProviders.open(); }],
+     [Math.round(hours), t("kHours")],
+     [latest[0] ? fmtDate(latest[0].date) : "-", t("kLast")]];
+    if (BADGES.length) { kp[0][2] = false; kp.splice(1, 0, [BADGES.length, t("kBadges"), false, goBadges]); kp.unshift([ALL.length, t("kAll"), true]); }
+    kp.forEach(function (x) {
+      var d = el(x[3] ? "button" : "div", { class: "kpi" + (x[2] ? " accent" : "") + (x[3] ? " kpi-link" : "") });
+      if (x[3]) { d.type = "button"; d.addEventListener("click", x[3]); }
+      d.innerHTML = "<b>" + esc(x[0]) + "</b><span>" + esc(x[1]) + "</span>"; k.appendChild(d);
     });
 
     // donut
@@ -165,17 +180,17 @@
 
     // hours by category
     var hb = $("#hourBars"); hb.innerHTML = "";
-    var hc = {}; DATA.forEach(function (c) { if (c.hours) hc[c.cat] = (hc[c.cat] || 0) + c.hours; });
+    var hc = {}; ALL.forEach(function (c) { if (c.hours) hc[c.cat] = (hc[c.cat] || 0) + c.hours; });
     var hl = Object.keys(hc).map(function (n) { return [n, hc[n]]; }).sort(function (a, b) { return b[1] - a[1]; });
     hl.forEach(function (x) { hb.appendChild(barRow(catName(x[0]), x[1], hl[0][1], CAT_COLOR[x[0]], null, fmtHours(x[1]))); });
 
     renderTimeline();
     var yc = $("#yearChips"); yc.innerHTML = "";
-    var yCount = countBy(DATA, function (c) { return c._y; });
+    var yCount = countBy(ALL, function (c) { return c._y; });
     Object.keys(yCount).sort().forEach(function (y) {
       var b = el("button", { class: "ychip", type: "button", "aria-label": t("inYear")(lang === "th" ? +y + 543 : y) });
       b.innerHTML = (lang === "th" ? +y + 543 : y) + "<b>" + yCount[y] + "</b>";
-      b.addEventListener("click", function () { S = { cat: "", q: "", issuer: "", year: y, sort: "new" }; showTab("certificates"); syncControls(); applyFilters(); });
+      b.addEventListener("click", function () { goKind("all"); S = { cat: "", q: "", issuer: "", year: y, sort: "new" }; showTab("certificates"); syncControls(); applyFilters(); });
       yc.appendChild(b);
     });
 
@@ -201,18 +216,18 @@
   }
   function hideTip() { if (tip) tip.hidden = true; }
   function monthTipHtml(key, cum) {
-    var p = key.split("-"), items = DATA.filter(function (c) { return c.date.slice(0, 7) === key; });
+    var p = key.split("-"), items = ALL.filter(function (c) { return c.date.slice(0, 7) === key; });
     var h = "<b>" + esc(fmtMonth(+p[0], +p[1] - 1)) + "</b><div class='tl-add'>" + esc(t("tlAdded")(items.length)) + (cum != null ? " · " + esc(cum) + " " + esc(t("tlTotal")) : "") + "</div>";
     h += "<ul>" + items.slice(0, 3).map(function (c) { return "<li>" + esc(title(c)) + "</li>"; }).join("") + (items.length > 3 ? "<li class='more'>" + esc(t("tlMore2")(items.length - 3)) + "</li>" : "") + "</ul>";
     return h;
   }
-  function goCell(cat, key) { S = { cat: cat, q: "", issuer: "", year: "", sort: "new", month: key }; showTab("certificates"); syncControls(); applyFilters(); window.scrollTo(0, 0); }
-  function goMonth(key) { S = { cat: "", q: "", issuer: "", year: "", sort: "new", month: key }; showTab("certificates"); syncControls(); applyFilters(); window.scrollTo(0, 0); }
+  function goCell(cat, key) { goKind("all"); S = { cat: cat, q: "", issuer: "", year: "", sort: "new", month: key }; showTab("certificates"); syncControls(); applyFilters(); window.scrollTo(0, 0); }
+  function goMonth(key) { goKind("all"); S = { cat: "", q: "", issuer: "", year: "", sort: "new", month: key }; showTab("certificates"); syncControls(); applyFilters(); window.scrollTo(0, 0); }
 
   function renderTimeline() {
     var box = $("#timeline"); box.innerHTML = "";
-    if (!DATA.length) return;
-    var mCount = countBy(DATA, function (c) { return c.date.slice(0, 7); });
+    if (!ALL.length) return;
+    var mCount = countBy(ALL, function (c) { return c.date.slice(0, 7); });
     var keys = Object.keys(mCount).sort();
     var f = keys[0].split("-"), l = keys[keys.length - 1].split("-");
     var y0 = +f[0], m0 = +f[1] - 1, y1 = +l[0], m1 = +l[1] - 1;
@@ -223,7 +238,7 @@
 
     // quick facts
     var facts = el("div", { class: "tl-facts" });
-    [[mCount[busiest], t("tlBusiest") + " · " + fmtMonth(+bp[0], +bp[1] - 1)], [t("tlOf")(keys.length, span), t("tlActive")], [DATA.length, t("tlGrowth")]].forEach(function (x) {
+    [[mCount[busiest], t("tlBusiest") + " · " + fmtMonth(+bp[0], +bp[1] - 1)], [t("tlOf")(keys.length, span), t("tlActive")], [ALL.length, t("tlGrowth")]].forEach(function (x) {
       facts.appendChild(el("div", { class: "tl-fact" }, "<b>" + esc(x[0]) + "</b><span>" + esc(x[1]) + "</span>"));
     });
     box.appendChild(facts);
@@ -236,7 +251,7 @@
     if (narrow && lang === "th") SHORT[11] = "สุขภาพ";
     if (narrow && lang !== "th") SHORT = ["AI & ML", "Data", "Coding", "IT & Cloud", "Business", "Marketing", "Finance", "Language", "Comms", "Leadership", "Science", "Health"];
     var cell = {}, maxCell = 1;
-    DATA.forEach(function (c) { var k = c.cat + "|" + c.date.slice(0, 7); cell[k] = (cell[k] || 0) + 1; if (cell[k] > maxCell) maxCell = cell[k]; });
+    ALL.forEach(function (c) { var k = c.cat + "|" + c.date.slice(0, 7); cell[k] = (cell[k] || 0) + 1; if (cell[k] > maxCell) maxCell = cell[k]; });
     var W = Math.max(300, box.clientWidth || 640), LW = narrow ? (lang === "th" ? 92 : 74) : 112, RP = 12, TP = 6, BP = 28, RH = 28, H = TP + CATS.length * RH + BP;
     var step = (W - LW - RP) / span, rMax = Math.min(12, Math.max(6, step * 0.85));
     function X(i) { return LW + (i + 0.5) * step; }
@@ -273,7 +288,7 @@
     var sizeLg = el("div", { class: "tl-size muted small" }, "<span>" + esc(t("tlSize")) + "</span>" + lgs.map(function (v) { var r = R(v); return '<i style="width:' + (r * 2).toFixed(0) + "px;height:" + (r * 2).toFixed(0) + 'px"></i><b>' + v + "</b>"; }).join(""));
     wrap.appendChild(sizeLg); box.appendChild(wrap);
     function cellTip(cat, key) {
-      var p = key.split("-"), items = DATA.filter(function (c) { return c.cat === cat && c.date.slice(0, 7) === key; });
+      var p = key.split("-"), items = ALL.filter(function (c) { return c.cat === cat && c.date.slice(0, 7) === key; });
       return "<b>" + esc(catName(cat)) + "</b><div class='tl-add'>" + esc(fmtMonth(+p[0], +p[1] - 1)) + " · " + esc(t("tlAdded")(items.length)) + "</div><ul>" + items.slice(0, 3).map(function (c) { return "<li>" + esc(title(c)) + "</li>"; }).join("") + (items.length > 3 ? "<li class='more'>" + esc(t("tlMore2")(items.length - 3)) + "</li>" : "") + "</ul>";
     }
     $$(".tl-bub", wrap).forEach(function (c) {
@@ -323,7 +338,7 @@
   function buildTable(box, keys) {
     var run = 0, maxN = 0;
     var rows = keys.map(function (k) {
-      var items = DATA.filter(function (c) { return c.date.slice(0, 7) === k; }).sort(function (a, b) { return b._d - a._d; });
+      var items = ALL.filter(function (c) { return c.date.slice(0, 7) === k; }).sort(function (a, b) { return b._d - a._d; });
       run += items.length; if (items.length > maxN) maxN = items.length;
       var cc = countBy(items, function (c) { return c.cat; });
       return { k: k, y: k.slice(0, 4), label: fmtMonth(+k.slice(0, 4), +k.slice(5, 7) - 1), n: items.length, hrs: items.reduce(function (s, c) { return s + (c.hours || 0); }, 0), cum: run, items: items,
@@ -402,19 +417,19 @@
   /* ---------- gallery ---------- */
   function buildFilters() {
     var si = $("#fIssuer"), sy = $("#fYear"), ss = $("#fSort");
-    var iss = countBy(DATA, function (c) { return c.issuer || c.platform; });
+    var iss = countBy(pool(), function (c) { return c.issuer || c.platform; });
     si.innerHTML = '<option value="">' + esc(t("allProviders")) + "</option>" +
       Object.keys(iss).sort(function (a, b) { return iss[b] - iss[a] || a.localeCompare(b); }).map(function (n) { return '<option value="' + esc(n) + '">' + esc(n) + " (" + iss[n] + ")</option>"; }).join("");
-    var ys = Object.keys(countBy(DATA, function (c) { return c._y; })).sort().reverse();
+    var ys = Object.keys(countBy(pool(), function (c) { return c._y; })).sort().reverse();
     sy.innerHTML = '<option value="">' + esc(t("allYears")) + "</option>" + ys.map(function (y) { return '<option value="' + y + '">' + (lang === "th" ? +y + 543 : y) + "</option>"; }).join("");
     ss.innerHTML = [["new", "sortNew"], ["old", "sortOld"], ["az", "sortAZ"], ["hours", "sortHours"]].map(function (x) { return '<option value="' + x[0] + '">' + esc(t(x[1])) + "</option>"; }).join("");
     $("#viewBtn").textContent = view === "grid" ? t("viewGrid") : t("viewList");
   }
   function buildChips() {
     var box = $("#chips"); box.innerHTML = "";
-    var byCat = countBy(DATA, function (c) { return c.cat; });
+    var byCat = countBy(pool(), function (c) { return c.cat; });
     var all = el("button", { class: "chip", type: "button", "aria-pressed": S.cat === "" ? "true" : "false" });
-    all.innerHTML = esc(t("allCats")) + " <em>" + DATA.length + "</em>";
+    all.innerHTML = esc(t("allCats")) + " <em>" + pool().length + "</em>";
     all.addEventListener("click", function () { S.cat = ""; applyFilters(); }); box.appendChild(all);
     CATS.forEach(function (c) {
       if (!byCat[c[0]]) return;
@@ -426,7 +441,7 @@
   function syncControls() { $("#q").value = S.q; $("#fIssuer").value = S.issuer; $("#fYear").value = S.year; $("#fSort").value = S.sort; }
   function applyFilters() {
     var q = S.q.trim().toLowerCase().split(/\s+/).filter(Boolean);
-    filtered = DATA.filter(function (c) {
+    filtered = pool().filter(function (c) {
       if (S.cat && c.cat !== S.cat) return false;
       if (S.issuer && (c.issuer || c.platform) !== S.issuer) return false;
       if (S.year && c._y !== S.year) return false;
@@ -441,37 +456,68 @@
       if (s === "hours") return (b.hours || 0) - (a.hours || 0) || b._d - a._d;
       return b._d - a._d || a.id - b.id;
     });
-    buildChips(); renderList();
+    buildChips(); renderKinds(); renderList();
   }
   function renderList() {
-    var box = $("#list"); box.innerHTML = ""; box.className = "cards" + (view === "list" ? " list" : "");
-    var cnt = $("#count"); cnt.textContent = t("showing")(filtered.length, DATA.length);
+    var box = $("#list"); box.innerHTML = ""; box.className = "cards" + (kind === "badge" ? " badges" : (view === "list" ? " list" : ""));
+    var cnt = $("#count"); cnt.textContent = t(kind === "badge" ? "showingB" : kind === "all" ? "showingA" : "showing")(filtered.length, pool().length);
+    $("#viewBtn").hidden = kind === "badge"; $("#empty p").textContent = t(kind === "badge" ? "noMatchB" : "noMatch");
     if (S.month) { var mp = S.month.split("-"), mb = el("button", { class: "mchip", type: "button" }); mb.textContent = fmtMonth(+mp[0], +mp[1] - 1) + " ✕"; mb.addEventListener("click", function () { S.month = ""; applyFilters(); }); cnt.appendChild(document.createTextNode(" ")); cnt.appendChild(mb); }
     $("#empty").hidden = filtered.length > 0;
     var frag = document.createDocumentFragment();
     filtered.forEach(function (c) {
+      if (kind === "badge") {
+        var w = el("div", { class: "bdg", style: "--cc:" + CAT_COLOR[c.cat] });
+        w.innerHTML = '<button type="button" class="bdg-open" aria-label="' + esc(title(c)) + '"><div class="thumb"><img loading="lazy" decoding="async" alt="" src="' + esc(thumbSrc(c)) + '"></div>' +
+          '<div class="body"><h3>' + esc(title(c)) + '</h3><div class="meta"><span class="iss" title="' + esc(c.issuer || c.platform) + '">' + esc(c.issuer || c.platform) + "</span><span>" + esc(fmtDate(c.date)) + (c.hours ? " · " + esc(fmtHours(c.hours)) : "") + "</span></div></div></button>" +
+          (safeUrl(c.verify) ? '<a class="bdg-verify" target="_blank" rel="noopener noreferrer" href="' + esc(safeUrl(c.verify)) + '">' + esc(t("verify")) + " ↗</a>" : "");
+        w.querySelector(".bdg-open").addEventListener("click", function () { openModal(c.id, filtered); });
+        frag.appendChild(w); return;
+      }
       var b = el("button", { class: "cert", type: "button", style: "--cc:" + CAT_COLOR[c.cat], "aria-label": title(c) });
       var sub = subtitle(c);
       b.innerHTML = '<div class="thumb"><img loading="lazy" decoding="async" alt="" src="' + esc(thumbSrc(c)) + '"></div>' +
-        '<div class="body"><span class="tag">' + esc(catName(c.cat)) + "</span><div><h3>" + esc(title(c)) + "</h3>" + (sub ? '<div class="th">' + esc(sub) + "</div>" : "") + "</div>" +
+        '<div class="body"><span class="tag">' + (isBadge(c) ? esc(t("badgeTag")) + " · " : "") + esc(catName(c.cat)) + "</span><div><h3>" + esc(title(c)) + "</h3>" + (sub ? '<div class="th">' + esc(sub) + "</div>" : "") + "</div>" +
         '<div class="meta"><span class="iss" title="' + esc(c.issuer || c.platform) + '">' + esc(c.issuer || c.platform) + "</span><span>" + esc(fmtDate(c.date)) + (c.hours ? " · " + esc(fmtHours(c.hours)) : "") + "</span></div></div>";
       b.addEventListener("click", function () { openModal(c.id, filtered); });
       frag.appendChild(b);
     });
     box.appendChild(frag);
   }
-  function goCategory(cat) { S = { cat: cat, q: "", issuer: "", year: "", sort: "new" }; showTab("certificates"); syncControls(); applyFilters(); window.scrollTo(0, 0); }
-  function goIssuer(name) {
-    var match = DATA.filter(function (c) { return c.platform === name; })[0];
+  function goCategory(cat) { goKind(BADGES.length ? "all" : "cert"); S = { cat: cat, q: "", issuer: "", year: "", sort: "new" }; showTab("certificates"); syncControls(); applyFilters(); window.scrollTo(0, 0); }
+  function goIssuer(name, k) {
+    goKind(k || (BADGES.length ? "all" : "cert"));
+    var P = pool(), match = P.filter(function (c) { return c.platform === name; })[0];
     S = { cat: "", q: "", issuer: match ? (match.issuer || match.platform) : "", year: "", sort: "new" };
-    if (match) { var same = DATA.filter(function (c) { return c.platform === name; }); var iss = {}; same.forEach(function (c) { iss[c.issuer || c.platform] = 1; }); if (Object.keys(iss).length > 1) { S.issuer = ""; S.q = name; } }
+    if (match) { var same = P.filter(function (c) { return c.platform === name; }); var iss = {}; same.forEach(function (c) { iss[c.issuer || c.platform] = 1; }); if (Object.keys(iss).length > 1) { S.issuer = ""; S.q = name; } }
     showTab("certificates"); syncControls(); applyFilters(); window.scrollTo(0, 0);
   }
+
+  /* ---------- certificate / badge switch ---------- */
+  function safeUrl(u) { return /^https?:\/\//i.test(u || "") ? u : ""; }
+  function renderKinds() {
+    var box = $("#kindSwitch"); if (!box) return;
+    box.hidden = !BADGES.length; if (!BADGES.length) return;
+    box.innerHTML = "";
+    [["all", "kAll", ALL.length], ["cert", "kindCert", DATA.length], ["badge", "kindBadge", BADGES.length]].forEach(function (x) {
+      var b = el("button", { type: "button", "aria-pressed": kind === x[0] ? "true" : "false" });
+      b.innerHTML = esc(t(x[1])) + " <em>" + x[2] + "</em>";
+      b.addEventListener("click", function () { if (kind !== x[0]) setKind(x[0]); });
+      box.appendChild(b);
+    });
+  }
+  function setKind(k) {
+    kind = k; S = { cat: "", q: "", issuer: "", year: "", sort: "new" };
+    buildFilters(); syncControls(); applyFilters();
+    try { if (currentTab === "certificates") history.replaceState(null, "", kind === "badge" ? "#badges" : "#certificates"); } catch (e) {}
+  }
+  function goCerts() { kind = "cert"; S = { cat: "", q: "", issuer: "", year: "", sort: "new" }; showTab("certificates"); buildFilters(); syncControls(); applyFilters(); window.scrollTo(0, 0); }
+  function goBadges() { kind = "badge"; S = { cat: "", q: "", issuer: "", year: "", sort: "new" }; showTab("certificates"); buildFilters(); syncControls(); applyFilters(); window.scrollTo(0, 0); }
 
   /* ---------- modal ---------- */
   var modalList = [], modalIdx = 0, lastFocus = null;
   function openModal(id, list) {
-    modalList = list && list.length ? list : DATA;
+    modalList = list && list.length ? list : ALL;
     modalIdx = Math.max(0, modalList.findIndex(function (c) { return c.id === id; }));
     lastFocus = document.activeElement; $("#modal").hidden = false; document.body.style.overflow = "hidden";
     renderModal(); $("#mClose").focus();
@@ -480,7 +526,8 @@
   function renderModal() {
     var c = modalList[modalIdx]; if (!c) return;
     $("#mTitle").textContent = title(c);
-    $("#mSub").textContent = [subtitle(c), c.issuer || c.platform, fmtDate(c.date), c.hours ? fmtHours(c.hours) : "", catName(c.cat)].filter(Boolean).join(" · ");
+    $("#mSub").textContent = [isBadge(c) ? t("badgeTag") : "", subtitle(c), c.issuer || c.platform, fmtDate(c.date), c.hours ? fmtHours(c.hours) : "", catName(c.cat)].filter(Boolean).join(" · ");
+    var mv = $("#mVerify"), vu = isBadge(c) ? safeUrl(c.verify) : ""; mv.hidden = !vu; if (vu) mv.href = vu;
     $("#mOpen").href = c.file; $("#mDl").href = c.file; $("#mDl").setAttribute("download", (title(c).replace(/[\\\/:*?"<>|]+/g, "").trim() || "certificate") + ".pdf");
     var body = $("#mBody"); body.innerHTML = "";
     var obj = el("object", { data: c.file + "#view=FitH", type: "application/pdf", "aria-label": title(c) });
@@ -492,7 +539,7 @@
   }
   function closeModal() {
     $("#modal").hidden = true; $("#mBody").innerHTML = ""; document.body.style.overflow = "";
-    try { history.replaceState(null, "", location.pathname + location.search + (currentTab === "certificates" ? "#certificates" : "")); } catch (e) {}
+    try { history.replaceState(null, "", location.pathname + location.search + (currentTab === "certificates" ? (kind === "badge" ? "#badges" : "#certificates") : "")); } catch (e) {}
     if (lastFocus && lastFocus.focus) lastFocus.focus();
   }
   function step(d) { var n = modalIdx + d; if (n >= 0 && n < modalList.length) { modalIdx = n; renderModal(); } }
@@ -503,7 +550,7 @@
     currentTab = name;
     $("#view-dashboard").hidden = name !== "dashboard"; $("#view-certificates").hidden = name !== "certificates";
     $$(".tabs button").forEach(function (b) { b.setAttribute("aria-selected", b.getAttribute("data-tab") === name ? "true" : "false"); });
-    try { history.replaceState(null, "", name === "certificates" ? "#certificates" : location.pathname + location.search); } catch (e) {}
+    try { history.replaceState(null, "", name === "certificates" ? (kind === "badge" ? "#badges" : "#certificates") : location.pathname + location.search); } catch (e) {}
   }
 
   /* ---------- wiring ---------- */
@@ -516,7 +563,7 @@
   $("#viewBtn").addEventListener("click", function () { view = view === "grid" ? "list" : "grid"; try { localStorage.setItem("view", view); } catch (e) {} $("#viewBtn").textContent = view === "grid" ? t("viewGrid") : t("viewList"); renderList(); });
   $("#resetBtn").addEventListener("click", function () { S = { cat: "", q: "", issuer: "", year: "", sort: "new" }; syncControls(); applyFilters(); });
   $("#langBtn").addEventListener("click", function () { lang = lang === "th" ? "en" : "th"; try { localStorage.setItem("lang", lang); } catch (e) {} renderAll(); if (!$("#modal").hidden) renderModal(); });
-  $$(".tabs button").forEach(function (b) { b.addEventListener("click", function () { showTab(b.getAttribute("data-tab")); window.scrollTo(0, 0); }); });
+  $$(".tabs button").forEach(function (b) { b.addEventListener("click", function () { var tb = b.getAttribute("data-tab"); if (tb === "certificates" && BADGES.length) { kind = "all"; S = { cat: "", q: "", issuer: "", year: "", sort: "new" }; buildFilters(); syncControls(); } showTab(tb); if (tb === "certificates" && BADGES.length) applyFilters(); window.scrollTo(0, 0); }); });
   $("#mClose").addEventListener("click", closeModal);
   $("#mPrev").addEventListener("click", function () { step(-1); });
   $("#mNext").addEventListener("click", function () { step(1); });
@@ -535,28 +582,30 @@
 
   /* hook used by assets/add.js */
   window.CertApp = {
-    data: function () { return DATA; },
+    data: function () { return ALL; },
     cats: CATS,
     lang: function () { return lang; },
-    add: function (rec) { DATA.push(prep(rec)); renderAll(); },
+    add: function (rec) { ALL.push(prep(rec)); split(); renderAll(); },
     current: function () { return modalList[modalIdx] || null; },
     update: function (id, patch) {
-      var c = DATA.filter(function (x) { return x.id === id; })[0]; if (!c) return;
-      for (var k in patch) c[k] = patch[k];
-      prep(c); renderAll(); if (!$("#modal").hidden) renderModal();
+      var c = ALL.filter(function (x) { return x.id === id; })[0]; if (!c) return;
+      for (var k in patch) { if (patch[k] === undefined) delete c[k]; else c[k] = patch[k]; }
+      prep(c); split(); renderAll(); if (!$("#modal").hidden) renderModal();
     },
     remove: function (id) {
-      var i = DATA.findIndex(function (x) { return x.id === id; }); if (i < 0) return;
-      DATA.splice(i, 1);
+      var i = ALL.findIndex(function (x) { return x.id === id; }); if (i < 0) return;
+      ALL.splice(i, 1); split();
       if (!$("#modal").hidden) closeModal();
       renderAll();
     },
-    open: function (id) { showTab("certificates"); S = { cat: "", q: "", issuer: "", year: "", sort: "new" }; syncControls(); applyFilters(); openModal(id, filtered); }
+    goProvider: function (name, k) { goIssuer(name, k); },
+    open: function (id) { var r = ALL.filter(function (x) { return x.id === id; })[0]; kind = r && isBadge(r) ? "badge" : "cert"; showTab("certificates"); buildFilters(); S = { cat: "", q: "", issuer: "", year: "", sort: "new" }; syncControls(); applyFilters(); openModal(id, filtered); }
   };
 
   renderAll();
   var h = location.hash;
   var m = /^#cert=(\d+)/.exec(h);
-  if (m) { showTab("certificates"); openModal(+m[1], filtered); }
+  if (m) { var r0 = ALL.filter(function (x) { return x.id === +m[1]; })[0]; if (r0 && isBadge(r0)) setKind("badge"); showTab("certificates"); openModal(+m[1], filtered); }
+  else if (h === "#badges" && BADGES.length) { setKind("badge"); showTab("certificates"); }
   else if (h === "#certificates") showTab("certificates");
 })();

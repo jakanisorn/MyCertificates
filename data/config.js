@@ -6,6 +6,10 @@ window.SITE_CONFIG = {
     en: "A living record of everything I have studied and completed.",
     th: "บันทึกการเรียนรู้และใบประกาศนียบัตรทั้งหมดที่ฉันสะสมมา"
   },
+  // Badges (digital credentials, marked  "type": "badge"  in data/certificates.js) are shown apart from certificates.
+  // true  = separate "Certificates | Badges" switch, own count and badge grid.
+  // false = go back to the old look: everything in one list, nothing else changes.
+  badges: true,
   // The "About me" card that opens when you click the star in front of your name.
   // Everything here is optional. Anything left empty is simply not shown.
   // Your certificate numbers (count, hours, subjects, start year) are filled in automatically.

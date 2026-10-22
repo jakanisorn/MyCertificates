@@ -451,7 +451,7 @@ window.CERTIFICATES = [
   "th": "คู่มือเลี้ยงลูกยุคดิจิทัล",
   "cat": "Health & Society",
   "issuer": "Thai Health Promotion Foundation (ThaiHealth)",
-  "platform": "HOOK x Thai Health (สสส.)",
+  "platform": "HOOK",
   "date": "2026-03-18",
   "hours": null
  },
@@ -499,7 +499,7 @@ window.CERTIFICATES = [
   "th": "ความเป็นผู้ประกอบการและการพัฒนาธุรกิจใหม่",
   "cat": "Business & Entrepreneurship",
   "issuer": "National Innovation Agency & Government Savings Bank",
-  "platform": "NIA x GSB",
+  "platform": "NIA",
   "date": "2023-09-04",
   "hours": null
  },
@@ -558,7 +558,7 @@ window.CERTIFICATES = [
   "en": "Fun With Data Science",
   "th": "สนุกกับวิทยาการข้อมูล",
   "cat": "Data & Analytics",
-  "issuer": "KMITL (KLIX)",
+  "issuer": "King Mongkut's Institute of Technology Ladkrabang",
   "platform": "KLIX",
   "date": "2023-08-19",
   "hours": null
@@ -1063,7 +1063,7 @@ window.CERTIFICATES = [
   "th": "STEAM4INNOVATOR (สะเต็มสำหรับนักนวัตกร)",
   "cat": "Science, Energy & Environment",
   "issuer": "National Innovation Agency & Government Savings Bank",
-  "platform": "NIA x GSB",
+  "platform": "NIA",
   "date": "2023-09-04",
   "hours": null
  },
@@ -1089,7 +1089,8 @@ window.CERTIFICATES = [
   "issuer": "Santander Open Academy",
   "platform": "Santander Open Academy",
   "date": "2024-12-02",
-  "hours": 0.93
+  "hours": 0.93,
+  "type": "badge"
  },
  {
   "id": 92,
@@ -1101,7 +1102,8 @@ window.CERTIFICATES = [
   "issuer": "Santander Open Academy",
   "platform": "Santander Open Academy",
   "date": "2024-12-02",
-  "hours": 1.3
+  "hours": 1.3,
+  "type": "badge"
  },
  {
   "id": 93,
@@ -1113,7 +1115,8 @@ window.CERTIFICATES = [
   "issuer": "Santander Open Academy",
   "platform": "Santander Open Academy",
   "date": "2024-12-02",
-  "hours": 0.72
+  "hours": 0.72,
+  "type": "badge"
  },
  {
   "id": 94,
@@ -1125,7 +1128,8 @@ window.CERTIFICATES = [
   "issuer": "Santander Open Academy",
   "platform": "Santander Open Academy",
   "date": "2024-12-02",
-  "hours": 0.85
+  "hours": 0.85,
+  "type": "badge"
  },
  {
   "id": 95,
@@ -1137,7 +1141,8 @@ window.CERTIFICATES = [
   "issuer": "Santander Open Academy",
   "platform": "Santander Open Academy",
   "date": "2024-12-02",
-  "hours": 0.53
+  "hours": 0.53,
+  "type": "badge"
  },
  {
   "id": 96,
@@ -1279,7 +1284,7 @@ window.CERTIFICATES = [
   "th": "ไฟฟ้าของเรามาจากไหน?",
   "cat": "Science, Energy & Environment",
   "issuer": "Chulalongkorn University",
-  "platform": "ChulaX MOOC",
+  "platform": "Chula MOOC",
   "date": "2026-03-23",
   "hours": null
  },
@@ -1375,7 +1380,7 @@ window.CERTIFICATES = [
   "th": "การบัญชีสําหรับธุรกิจใหม่",
   "cat": "Finance & Accounting",
   "issuer": "National Innovation Agency & Government Savings Bank",
-  "platform": "NIA x GSB",
+  "platform": "NIA",
   "date": "2023-08-26",
   "hours": null
  },
@@ -1435,7 +1440,7 @@ window.CERTIFICATES = [
   "th": "การสร้างตราสินค้า",
   "cat": "Marketing & Branding",
   "issuer": "National Innovation Agency & Government Savings Bank",
-  "platform": "NIA x GSB",
+  "platform": "NIA",
   "date": "2023-08-27",
   "hours": null
  },
@@ -1459,7 +1464,7 @@ window.CERTIFICATES = [
   "th": "การสร้างธุรกิจให้เติบโต",
   "cat": "Business & Entrepreneurship",
   "issuer": "National Innovation Agency & Government Savings Bank",
-  "platform": "NIA x GSB",
+  "platform": "NIA",
   "date": "2023-08-29",
   "hours": null
  },
@@ -1495,7 +1500,7 @@ window.CERTIFICATES = [
   "th": "การหาแนวคิดธุรกิจ",
   "cat": "Business & Entrepreneurship",
   "issuer": "National Innovation Agency & Government Savings Bank",
-  "platform": "NIA x GSB",
+  "platform": "NIA",
   "date": "2023-08-19",
   "hours": null
  },
@@ -1555,7 +1560,7 @@ window.CERTIFICATES = [
   "th": "การเป็นผู้ประกอบการ",
   "cat": "Business & Entrepreneurship",
   "issuer": "National Innovation Agency & Government Savings Bank",
-  "platform": "NIA x GSB",
+  "platform": "NIA",
   "date": "2023-06-05",
   "hours": null
  },
@@ -1567,7 +1572,7 @@ window.CERTIFICATES = [
   "th": "การเริ่มดําเนินธุรกิจ",
   "cat": "Business & Entrepreneurship",
   "issuer": "National Innovation Agency & Government Savings Bank",
-  "platform": "NIA x GSB",
+  "platform": "NIA",
   "date": "2023-08-29",
   "hours": null
  },
@@ -1579,7 +1584,7 @@ window.CERTIFICATES = [
   "th": "การเริ่มต้นธุรกิจใหม่",
   "cat": "Business & Entrepreneurship",
   "issuer": "National Innovation Agency & Government Savings Bank",
-  "platform": "NIA x GSB",
+  "platform": "NIA",
   "date": "2023-08-18",
   "hours": null
  },
@@ -1603,7 +1608,7 @@ window.CERTIFICATES = [
   "th": "การเลือกแนวคิดธุรกิจ",
   "cat": "Business & Entrepreneurship",
   "issuer": "National Innovation Agency & Government Savings Bank",
-  "platform": "NIA x GSB",
+  "platform": "NIA",
   "date": "2023-08-19",
   "hours": null
  },
@@ -1711,7 +1716,7 @@ window.CERTIFICATES = [
   "th": "ธุรกิจตามแนวคิด BCG",
   "cat": "Business & Entrepreneurship",
   "issuer": "National Innovation Agency & Government Savings Bank",
-  "platform": "NIA x GSB",
+  "platform": "NIA",
   "date": "2023-08-29",
   "hours": null
  },
@@ -2155,7 +2160,7 @@ window.CERTIFICATES = [
   "th": "โครงสร้างรูปแบบธุรกิจ",
   "cat": "Business & Entrepreneurship",
   "issuer": "National Innovation Agency & Government Savings Bank",
-  "platform": "NIA x GSB",
+  "platform": "NIA",
   "date": "2023-08-26",
   "hours": null
  },
@@ -2289,7 +2294,9 @@ window.CERTIFICATES = [
   "issuer": "Anthoropic",
   "platform": "Claude Academy",
   "date": "2026-10-18",
-  "hours": 2.5
+  "hours": 2.5,
+  "type": "badge",
+  "verify": "https://academy.claude.com/verify/f808f98481b497d89cb79f0cd5a4cd85"
  },
  {
   "id": 192,
@@ -2301,7 +2308,9 @@ window.CERTIFICATES = [
   "issuer": "Anthoropic",
   "platform": "Claude Academy",
   "date": "2026-10-18",
-  "hours": 1.5
+  "hours": 1.5,
+  "type": "badge",
+  "verify": "https://academy.claude.com/verify/6ab116c1ff35c47df2db5e13a0498dba"
  },
  {
   "id": 193,
@@ -2313,7 +2322,9 @@ window.CERTIFICATES = [
   "issuer": "Anthoropic",
   "platform": "Claude Academy",
   "date": "2026-10-18",
-  "hours": 2.5
+  "hours": 2.5,
+  "type": "badge",
+  "verify": "https://academy.claude.com/verify/c94a9f8234fdb95ee2b5866b3e6b94df"
  },
  {
   "id": 194,
@@ -2337,7 +2348,9 @@ window.CERTIFICATES = [
   "issuer": "Anthoropic",
   "platform": "Claude Academy",
   "date": "2026-10-19",
-  "hours": 1
+  "hours": 1,
+  "type": "badge",
+  "verify": "https://academy.claude.com/verify/e6762a8f1955bff26682a29a5e81b80c"
  },
  {
   "id": 196,
@@ -2349,7 +2362,9 @@ window.CERTIFICATES = [
   "issuer": "Anthoropic",
   "platform": "Claude Academy",
   "date": "2026-10-19",
-  "hours": 1
+  "hours": 1,
+  "type": "badge",
+  "verify": "https://academy.claude.com/verify/af1052ada3dc34460206b283da8a5682"
  },
  {
   "id": 197,
@@ -2361,7 +2376,9 @@ window.CERTIFICATES = [
   "issuer": "Anthoropic",
   "platform": "Claude Academy",
   "date": "2026-10-19",
-  "hours": 1
+  "hours": 1,
+  "type": "badge",
+  "verify": "https://academy.claude.com/verify/274507e6c61dc3a047480615506c22f3"
  },
  {
   "id": 198,
@@ -2373,7 +2390,9 @@ window.CERTIFICATES = [
   "issuer": "Microsoft",
   "platform": "Microsoft Learn",
   "date": "2026-10-13",
-  "hours": 0.25
+  "hours": 0.25,
+  "type": "badge",
+  "verify": "https://learn.microsoft.com/api/achievements/share/en-us/KanisornJintaAchariya-2236/FEHL9A3X?sharingId=6E1DB6860AC1C757"
  },
  {
   "id": 199,
@@ -2397,6 +2416,8 @@ window.CERTIFICATES = [
   "issuer": "Anthoropic",
   "platform": "Claude Academy",
   "date": "2026-10-20",
-  "hours": 2.5
+  "hours": 2.5,
+  "type": "badge",
+  "verify": "https://academy.claude.com/verify/4865cf1e3f73d2cb09ee7982ac1cba61"
  }
 ];

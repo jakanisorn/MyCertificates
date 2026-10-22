@@ -31,7 +31,7 @@
   /* ---------- text ---------- */
   var TX = {
     en: {
-      btn: "+ Add certificate", title: "Add a certificate",
+      btn: "+ Add", title: "Add a certificate",
       folderTitle: "1. Where should it be saved?",
       folderOk: function (n) { return "Saving into the folder “" + n + "”."; },
       folderNone: "Choose your Certificate4Fun folder once (the one that contains the website folder). New certificates will then be saved to both the website and your original folder.",
@@ -54,6 +54,7 @@
       fCat: "Category", fCatSuggest: "Suggested from the title", fPlatform: "Platform / provider", fPlatformHelp: "Where you studied, e.g. Coursera, Thai MOOC, SET e-Learning.",
       fIssuer: "Issued by — optional", fIssuerHelp: "University or company named on the certificate. Leave empty if it is the same as the platform.",
       fDate: "Date earned", fDateGuess: "Taken from the file’s date — please check it.", fDateFound: "Found in the PDF — please check it.",
+      fType: "Type", fTypeHelp: "A badge is a digital credential (often with a verify link). Everything else is a certificate.", fTypeCert: "Certificate", fTypeBadge: "Badge", fVerify: "Verify link — optional", fVerifyHelp: "The public page where anyone can check the badge (https://…).", badVerify: "Enter a full link starting with https://",
       fHours: "Learning hours — optional", fHoursHelp: "Only if the certificate states it. Decimals are fine (1.5).",
       suggestions: "Lines found in the PDF — click one to use it as the title:",
       thumbOwn: "Use a different preview image", thumbNone: "No preview image",
@@ -72,7 +73,7 @@
       errSave: function (m) { return "Couldn’t save: " + m; }
     },
     th: {
-      btn: "+ เพิ่มใบประกาศนียบัตร", title: "เพิ่มใบประกาศนียบัตร",
+      btn: "+ เพิ่ม", title: "เพิ่มใบประกาศนียบัตร",
       folderTitle: "1. จะบันทึกไว้ที่ไหน",
       folderOk: function (n) { return "จะบันทึกลงในโฟลเดอร์ “" + n + "”"; },
       folderNone: "เลือกโฟลเดอร์ Certificate4Fun ของคุณหนึ่งครั้ง (โฟลเดอร์ที่มีโฟลเดอร์ website อยู่ข้างใน) ใบประกาศนียบัตรใหม่จะถูกบันทึกทั้งในเว็บไซต์และโฟลเดอร์ต้นฉบับ",
@@ -95,6 +96,7 @@
       fCat: "หมวดหมู่", fCatSuggest: "แนะนำจากชื่อหลักสูตร", fPlatform: "แพลตฟอร์ม / แหล่งที่มา", fPlatformHelp: "ที่ที่คุณเรียน เช่น Coursera, Thai MOOC, SET e-Learning",
       fIssuer: "หน่วยงานที่ออกให้ — ไม่บังคับ", fIssuerHelp: "มหาวิทยาลัยหรือบริษัทที่ระบุในใบประกาศ เว้นว่างได้ถ้าเหมือนกับแพลตฟอร์ม",
       fDate: "วันที่ได้รับ", fDateGuess: "ใช้วันที่ของไฟล์ — โปรดตรวจสอบ", fDateFound: "พบในไฟล์ PDF — โปรดตรวจสอบ",
+      fType: "ประเภท", fTypeHelp: "แบดจ์คือเหรียญดิจิทัล (มักมีลิงก์ตรวจสอบ) ที่เหลือคือใบประกาศนียบัตร", fTypeCert: "ใบประกาศนียบัตร", fTypeBadge: "แบดจ์", fVerify: "ลิงก์ตรวจสอบ — ไม่บังคับ", fVerifyHelp: "หน้าสาธารณะที่ใช้ตรวจสอบแบดจ์ (https://…)", badVerify: "กรอกลิงก์เต็มที่ขึ้นต้นด้วย https://",
       fHours: "ชั่วโมงเรียน — ไม่บังคับ", fHoursHelp: "กรอกเฉพาะเมื่อใบประกาศระบุไว้ ใส่ทศนิยมได้ (1.5)",
       suggestions: "ข้อความที่พบในไฟล์ PDF — คลิกเพื่อใช้เป็นชื่อหลักสูตร:",
       thumbOwn: "ใช้ภาพตัวอย่างอื่น", thumbNone: "ไม่มีภาพตัวอย่าง",
@@ -255,6 +257,7 @@
     if (!Array.isArray(arr)) throw new Error("certificates.js has an unexpected format");
     return { text: text, arr: arr };
   }
+  function BADGES_ON() { return (window.SITE_CONFIG || {}).badges !== false; }
   function serialise(arr) { return "window.CERTIFICATES = " + JSON.stringify(arr, null, 1) + ";\n"; }
   function cleanRec(c) { var o = {}; Object.keys(c).forEach(function (k) { if (k.charAt(0) !== "_") o[k] = c[k]; }); return o; }
   function download(blob, name) {
@@ -365,6 +368,7 @@
     $("#fDate").value = rec.date || ""; $("#fPlat").value = rec.platform || "";
     $("#fIss").value = rec.issuer && rec.issuer !== rec.platform ? rec.issuer : "";
     $("#fHrs").value = rec.hours != null ? rec.hours : "";
+    if ($("#fType")) { $("#fType").value = rec.type === "badge" ? "badge" : ""; $("#fVer").value = rec.verify || ""; $("#fVerWrap").hidden = rec.type !== "badge"; }
     $("#addDelete").hidden = false; $("#addWill").textContent = T("editNote"); $("#hThumb").textContent = rec.thumb ? "" : T("thumbNone");
     modal.hidden = false; document.body.style.overflow = "hidden"; $("#fEn").focus();
     if (HAS_FS && !dirHandle) restoreP = Promise.all([idb("readonly", function (s) { return s.get("dir"); }), idb("readonly", function (s) { return s.get("orig"); })]).then(function (r) { if (r[0] && !dirHandle) dirHandle = r[0]; if (r[1] && !origHandle) origHandle = r[1]; paintFolder(); });
@@ -380,6 +384,7 @@
       if (!v.th && autoTr) { btn.textContent = T("translating"); v.th = (await translateTh(v.en)) || ""; btn.textContent = T("saving"); }
       var id = st.editing.id, p = pad(id, 3), direct = HAS_FS && dirHandle;
       var patch = { en: v.en, th: v.th || null, cat: v.cat, issuer: v.issuer || v.platform, platform: v.platform, date: v.date, hours: v.hours };
+      if ($("#fType")) { patch.type = v.type || undefined; patch.verify = v.verify || undefined; }
       var live = {}; Object.keys(patch).forEach(function (k) { live[k] = patch[k]; });
       var thumbPath = "thumbs/" + p + ".jpg", newThumb = st.ownThumb && st.thumb;
       if (newThumb) patch.thumb = thumbPath;
@@ -428,6 +433,8 @@
       '<div class="field"><label for="fPlat">' + esc(T("fPlatform")) + ' <i class="rq">*</i></label><input id="fPlat" type="text" list="dlPlat" autocomplete="off" required><datalist id="dlPlat">' + uniq("platform").map(function (x) { return '<option value="' + esc(x) + '">'; }).join("") + '</datalist><small class="help">' + esc(T("fPlatformHelp")) + '</small><small class="err" id="ePlat" hidden></small></div>' +
       '<div class="field"><label for="fIss">' + esc(T("fIssuer")) + '</label><input id="fIss" type="text" list="dlIss" autocomplete="off"><datalist id="dlIss">' + uniq("issuer").map(function (x) { return '<option value="' + esc(x) + '">'; }).join("") + '</datalist><small class="help">' + esc(T("fIssuerHelp")) + '</small></div>' +
       '<div class="field"><label for="fHrs">' + esc(T("fHours")) + '</label><input id="fHrs" type="number" min="0" step="0.25" inputmode="decimal"><small class="help">' + esc(T("fHoursHelp")) + '</small><small class="err" id="eHrs" hidden></small></div>' +
+      (BADGES_ON() ? '<div class="field"><label for="fType">' + esc(T("fType")) + '</label><select id="fType"><option value="">' + esc(T("fTypeCert")) + '</option><option value="badge">' + esc(T("fTypeBadge")) + '</option></select><small class="help">' + esc(T("fTypeHelp")) + '</small></div>' +
+        '<div class="field" id="fVerWrap" hidden><label for="fVer">' + esc(T("fVerify")) + '</label><input id="fVer" type="url" inputmode="url" autocomplete="off" placeholder="https://"><small class="help">' + esc(T("fVerifyHelp")) + '</small><small class="err" id="eVer" hidden></small></div>' : '') +
       '<div class="field"><label for="fThumb">' + esc(T("thumbOwn")) + '</label><input id="fThumb" type="file" accept="image/*"><small class="help" id="hThumb"></small></div>' +
       '</div>' +
       '<p class="muted small" id="addWill"></p><p class="warn" id="addWarn" role="alert" hidden></p>' +
@@ -441,6 +448,7 @@
     ["dragleave", "drop"].forEach(function (n) { drop.addEventListener(n, function (e) { e.preventDefault(); drop.classList.remove("over"); }); });
     drop.addEventListener("drop", function (e) { var fl = e.dataTransfer && e.dataTransfer.files; if (fl && fl.length) pickFiles(fl); });
     drop.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); $("#addFile").click(); } });
+    if ($("#fType")) $("#fType").addEventListener("change", function () { $("#fVerWrap").hidden = this.value !== "badge"; });
     $("#addCancel").addEventListener("click", close);
     $("#addDelete").addEventListener("click", askDelete);
     $("#addForm").addEventListener("submit", function (e) { e.preventDefault(); save(); });
@@ -649,6 +657,8 @@
   function collect() {
     var v = { en: $("#fEn").value.trim(), th: $("#fTh").value.trim(), cat: $("#fCat").value, date: $("#fDate").value, platform: $("#fPlat").value.trim(), issuer: $("#fIss").value.trim(), hours: $("#fHrs").value.trim() };
     var ok = true;
+    v.type = $("#fType") && $("#fType").value === "badge" ? "badge" : ""; v.verify = v.type ? ($("#fVer").value.trim()) : "";
+    if (v.verify && !/^https?:\/\/\S+$/i.test(v.verify)) { fieldErr("eVer", T("badVerify")); ok = false; } else if ($("#eVer")) fieldErr("eVer", "");
     fieldErr("eEn", v.en ? "" : T("req")); if (!v.en) ok = false;
     fieldErr("eCat", v.cat ? "" : T("req")); if (!v.cat) ok = false;
     fieldErr("ePlat", v.platform ? "" : T("req")); if (!v.platform) ok = false;
@@ -685,6 +695,7 @@
       } else { id = nextId(); }
       var p = pad(id, 3);
       var rec = { id: id, file: "certificates/" + p + ".pdf", thumb: st.thumb ? "thumbs/" + p + ".jpg" : null, en: v.en, th: v.th || null, cat: v.cat, issuer: v.issuer || v.platform, platform: v.platform, date: v.date, hours: v.hours };
+      if (v.type) { rec.type = v.type; if (v.verify) rec.verify = v.verify; }
       var pdfBlob = new Blob([st.buf], { type: "application/pdf" });
       if (direct) {
         await writeTo(dirHandle, ["certificates", p + ".pdf"], pdfBlob);

@@ -80,6 +80,7 @@
 
   <!-- CERTIFICATES -->
   <section id="view-certificates" hidden aria-labelledby="tab-certs">
+    <div id="kindSwitch" class="seg" role="group" aria-label="Type" hidden></div>
     <div class="toolbar">
       <label class="search">
         <span class="sr" data-i18n="search">Search</span>
@@ -118,6 +119,7 @@
       <div class="m-actions">
         <button id="mPrev" class="icon" aria-label="Previous">‹</button>
         <button id="mNext" class="icon" aria-label="Next">›</button>
+        <a id="mVerify" class="pill" target="_blank" rel="noopener noreferrer" hidden data-i18n="verify">Verify</a>
         <a id="mOpen" class="pill" target="_blank" rel="noopener" data-i18n="open">Open</a>
         <a id="mDl" class="pill" download data-i18n="download">Download</a>
         <button id="mClose" class="icon" aria-label="Close">✕</button>
@@ -130,8 +132,10 @@
 <script src="data/config.js"></script>
 <script src="data/certificates.js"></script>
 <script src="data/profile.js"></script>
+<script src="data/providers.js"></script>
 <script src="assets/app.js"></script>
 <script src="assets/add.js"></script>
 <script src="assets/about.js"></script>
+<script src="assets/providers.js"></script>
 </body>
 </html>

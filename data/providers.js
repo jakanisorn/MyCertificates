@@ -1,0 +1,42 @@
+// Website of each provider, shown as a "Website" button in the Providers popup.
+// You can edit these with the "Edit links" button in the popup, or by hand here.
+// The name on the left must match the "platform" of your certificates exactly.
+// A provider that is not listed gets a "Search" button instead (a web search for its name).
+window.PROVIDER_LINKS = {
+  "atingi": "https://www.atingi.org",
+  "borntoDev": "https://borntodev.com",
+  "BUU MOOC": "https://mooc.buu.ac.th",
+  "Chula MOOC": "https://mooc.chula.ac.th",
+  "Chula MOOC Flexi": "https://mooc.chula.ac.th",
+  "ChulaX MOOC": "https://mooc.chula.ac.th",
+  "Claude Academy": "https://academy.claude.com",
+  "CMU MOOC": "https://mooc.cmu.ac.th",
+  "CognitiveClass.ai": "https://cognitiveclass.ai",
+  "Creative Economy Agency (CEA)": "https://www.cea.or.th",
+  "CRU MOOC": "https://cru-mooc.chandra.ac.th",
+  "DataRockie": "https://datarockie.com",
+  "Department of Skill Development": "https://www.dsd.go.th",
+  "FinDi (TBAC)": "https://findi.tbac.or.th/",
+  "FutureSkill": "https://futureskill.co",
+  "Google Analytics Academy": "https://skillshop.withgoogle.com",
+  "Google Skillshop": "https://skillshop.withgoogle.com",
+  "Great Learning Academy": "https://www.mygreatlearning.com/academy",
+  "HOOK": "https://hooklearning.com/",
+  "HOOK x Thai Health (สสส.)": "https://hooklearning.com/",
+  "K-MOOC": "https://www.kmooc.kr",
+  "KLIX": "https://klix.kmitl.ac.th/",
+  "MCA (Mahidol Channel Academy)": "https://channel.mahidol.ac.th/mca",
+  "Microsoft Learn": "https://learn.microsoft.com",
+  "Mindluster": "https://mindluster.com",
+  "MUx (Mahidol University)": "https://mux.mahidol.ac.th",
+  "NIA": "https://moocs.nia.or.th/",
+  "NVIDIA Academy": "https://academy.nvidia.com",
+  "PSU MOOC": "https://mooc.psu.ac.th",
+  "Santander Open Academy": "https://www.santanderopenacademy.com",
+  "SET e-Learning": "https://setelearning.set.or.th",
+  "Silpakorn University": "https://www.su.ac.th",
+  "Simplilearn": "https://www.simplilearn.com",
+  "Sololearn": "https://www.sololearn.com",
+  "Thai MOOC": "https://thaimooc.org",
+  "Thammasat University": "https://tu.ac.th"
+};
