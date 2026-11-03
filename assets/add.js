@@ -31,8 +31,8 @@
   /* ---------- text ---------- */
   var TX = {
     en: {
-      btn: "+ Add", title: "Add a certificate",
-      folderTitle: "1. Where should it be saved?",
+      btn: "+ Add", title: "Add a Credentials",
+      folderTitle: "Where should it be saved?",
       folderOk: function (n) { return "Saving into the folder “" + n + "”."; },
       folderNone: "Choose your Certificate4Fun folder once (the one that contains the website folder). New certificates will then be saved to both the website and your original folder.",
       origOk: function (n) { return "Also saving a copy of each PDF in your original folder “" + n + "”."; },
@@ -43,25 +43,26 @@
       folderNoApi: "This browser can’t update your folder automatically. Open this page in Chrome or Edge on your computer and it will. Until then, saving downloads three files that you place in the folder by hand.",
       folderBad: "That folder doesn’t contain index.html and data/certificates.js. Please choose the website folder.",
       folderDenied: "Permission to save in that folder was not given.",
-      fileTitle: "2. Choose the certificate (PDF or image)",
-      drop: "Drop a PDF or image here, or click to choose", dropSub: "A PDF, or one or more images (JPG, PNG, WebP) that are turned into a PDF for you. Details below are filled in automatically where possible — please check them.",
+      fileTitle: "Choose the file (PDF or image)",
+      needFile: "Please choose a PDF or image file first (step 2).", drop: "Drop your PDF or image here", dropOr: "or click to browse your files", dropSub: "A PDF, or images (JPG, PNG, WebP) that are turned into a PDF for you. Details are filled in automatically where possible — please check them.", change: "Change file", ready: "Ready",
+      folderOkS: function (n) { return "Website folder · " + n; }, origOkS: function (n) { return "Original folder · " + n; }, folderNoneS: "Choose your Certificate4Fun folder once.", origNoneS: "Original folder: not set",
       converted: function (n) { return "converted from " + n + (n === 1 ? " image" : " images"); }, imgFail: "This image couldn’t be read. Use JPG, PNG or WebP (iPhone HEIC photos need to be exported as JPG first).", mixed: "Choose either one PDF or one or more images — not both.",
       reading: "Reading the PDF…", pages: function (n) { return n + (n === 1 ? " page" : " pages"); },
-      noPdfjs: "Couldn’t read inside this PDF (no automatic preview). You can still add it — fill in the details yourself and, if you like, choose a preview image.",
+      noPdfjs: "Couldn’t read inside this PDF (no automatic preview). You can still add it — fill in the details yourself.",
       notPdf: "Please choose a PDF or an image (JPG, PNG, WebP).",
-      detailsTitle: "3. Details",
+      detailsTitle: "Details", gWhat: "What is it?", gSource: "Where is it from?", gWhen: "When and how long?", reqNote: "* Required",
       fTitle: "Title (English)", fTitleHelp: "The course or certificate name as you want it shown.", fTitleTh: "Title (Thai) — optional",
       fCat: "Category", fCatSuggest: "Suggested from the title", fPlatform: "Platform / provider", fPlatformHelp: "Where you studied, e.g. Coursera, Thai MOOC, SET e-Learning.",
-      fIssuer: "Issued by — optional", fIssuerHelp: "University or company named on the certificate. Leave empty if it is the same as the platform.",
+      fIssuer: "Issued by", fIssuerHelp: "The university or company named on it.",
       fDate: "Date earned", fDateGuess: "Taken from the file’s date — please check it.", fDateFound: "Found in the PDF — please check it.",
-      fType: "Type", fTypeHelp: "A badge is a digital credential (often with a verify link). Everything else is a certificate.", fTypeCert: "Certificate", fTypeBadge: "Badge", fVerify: "Verify link — optional", fVerifyHelp: "The public page where anyone can check the badge (https://…).", badVerify: "Enter a full link starting with https://",
+      fType: "Type", fTypeHelp: "A badge is a digital credential (often with a verify link). Everything else is a certificate.", fTypeCert: "Certificate", fTypeBadge: "Badge", fVerify: "Verify link — optional", fVerifyHelp: "The public page where anyone can check it (https://…).", badVerify: "Enter a full link starting with https://",
       fHours: "Learning hours — optional", fHoursHelp: "Only if the certificate states it. Decimals are fine (1.5).",
       suggestions: "Lines found in the PDF — click one to use it as the title:",
-      thumbOwn: "Use a different preview image", thumbNone: "No preview image",
+      thumbNone: "No preview image",
       willSave: "Will be saved as",
       req: "Required.", badDate: "Choose a valid date.", badHours: "Enter a number, or leave empty.",
       dup: "A certificate with the same title and date is already on the site. Click again to add it anyway.",
-      cancel: "Cancel", save: "Save certificate", translating: "Translating…", autoTh: "Translated to Thai automatically — please check it.", saveChoose: "Choose folder and save", saveChanges: "Save changes", editBtn: "Edit", editTitle: "Edit certificate", editNote: "Only the details change. The PDF itself stays as it is.", thumbSet: "New preview image selected.", editNotFound: function (id) { return "Certificate #" + id + " was not found in data/certificates.js."; }, doneEditTitle: "Changes saved", doneEditFolder: "The details were updated in your website folder and on this page.", doneEditDl: "Updated on this page for now. To keep the change, put the downloaded certificates.js into your website’s data folder (replace the old one).", saveAnyway: "Save anyway", saving: "Saving…",
+      cancel: "Cancel", save: "Save", translating: "Translating…", autoTh: "Translated to Thai automatically — please check it.", saveChoose: "Choose folder and save", saveChanges: "Save changes", editBtn: "Edit", editTitle: "Edit a Credential", editNote: "Only the details change. The PDF itself stays as it is.", thumbSet: "New preview image selected.", editNotFound: function (id) { return "Certificate #" + id + " was not found in data/certificates.js."; }, doneEditTitle: "Changes saved", doneEditFolder: "The details were updated in your website folder and on this page.", doneEditDl: "Updated on this page for now. To keep the change, put the downloaded certificates.js into your website’s data folder (replace the old one).", saveAnyway: "Save anyway", saving: "Saving…",
       delBtn: "Delete", delAsk: "Delete this certificate?", delWhat: "It will be removed from the website. Its PDF and preview image will be deleted from your website folder. The original PDF in your own folder is not touched.", delWhatDl: "It will be removed from this page. Because this browser can’t change your folder, you will need to delete its files by hand afterwards.", delKeep: "Keep it", delYes: "Yes, delete", deleting: "Deleting…", doneDelTitle: "Certificate deleted", doneDelFolder: "Removed from your website folder and from this page. The previous list was saved as data/certificates.backup.js.", doneDelDl: "Removed from this page for now. To keep the change, put the downloaded certificates.js into your website’s data folder (replace the old one).", doneDelLeft: "Delete these files by hand:", doneDelKept: "These files could not be deleted automatically:", doneDelGit: "If the site is already online, open GitHub Desktop, commit and push to remove it there too.",
       doneTitle: "Certificate added", doneFolder: "Saved to your website folder. It is already on the page.", doneFiles: "Files written:",
       doneDownload: "It is on this page for now, but to keep it, place the three downloaded files in your website folder:",
@@ -73,8 +74,8 @@
       errSave: function (m) { return "Couldn’t save: " + m; }
     },
     th: {
-      btn: "+ เพิ่ม", title: "เพิ่มใบประกาศนียบัตร",
-      folderTitle: "1. จะบันทึกไว้ที่ไหน",
+      btn: "+ เพิ่ม", title: "เพิ่มใบรับรองและแบดจ์",
+      folderTitle: "จะบันทึกไว้ที่ไหน",
       folderOk: function (n) { return "จะบันทึกลงในโฟลเดอร์ “" + n + "”"; },
       folderNone: "เลือกโฟลเดอร์ Certificate4Fun ของคุณหนึ่งครั้ง (โฟลเดอร์ที่มีโฟลเดอร์ website อยู่ข้างใน) ใบประกาศนียบัตรใหม่จะถูกบันทึกทั้งในเว็บไซต์และโฟลเดอร์ต้นฉบับ",
       origOk: function (n) { return "และจะบันทึกสำเนา PDF ลงในโฟลเดอร์ต้นฉบับ “" + n + "” ด้วย"; },
@@ -85,25 +86,26 @@
       folderNoApi: "เบราว์เซอร์นี้อัปเดตโฟลเดอร์ให้อัตโนมัติไม่ได้ ให้เปิดหน้านี้ด้วย Chrome หรือ Edge บนคอมพิวเตอร์ ระหว่างนี้การบันทึกจะดาวน์โหลดไฟล์ 3 ไฟล์ให้ไปวางในโฟลเดอร์เอง",
       folderBad: "โฟลเดอร์นี้ไม่มี index.html และ data/certificates.js กรุณาเลือกโฟลเดอร์เว็บไซต์",
       folderDenied: "ไม่ได้รับอนุญาตให้บันทึกในโฟลเดอร์นั้น",
-      fileTitle: "2. เลือกใบประกาศนียบัตร (PDF หรือรูปภาพ)",
-      drop: "วางไฟล์ PDF หรือรูปภาพที่นี่ หรือคลิกเพื่อเลือก", dropSub: "ไฟล์ PDF หรือรูปภาพตั้งแต่หนึ่งรูปขึ้นไป (JPG, PNG, WebP) ซึ่งจะถูกแปลงเป็น PDF ให้อัตโนมัติ รายละเอียดด้านล่างจะถูกกรอกให้เท่าที่ทำได้ — โปรดตรวจสอบอีกครั้ง",
+      fileTitle: "เลือกไฟล์ (PDF หรือรูปภาพ)",
+      needFile: "กรุณาเลือกไฟล์ PDF หรือรูปภาพก่อน (ขั้นตอนที่ 2)", drop: "วางไฟล์ PDF หรือรูปภาพที่นี่", dropOr: "หรือคลิกเพื่อเลือกไฟล์", dropSub: "ไฟล์ PDF หรือรูปภาพ (JPG, PNG, WebP) ซึ่งจะถูกแปลงเป็น PDF ให้อัตโนมัติ รายละเอียดจะถูกกรอกให้เท่าที่ทำได้ — โปรดตรวจสอบ", change: "เปลี่ยนไฟล์", ready: "พร้อมแล้ว",
+      folderOkS: function (n) { return "โฟลเดอร์เว็บไซต์ · " + n; }, origOkS: function (n) { return "โฟลเดอร์ต้นฉบับ · " + n; }, folderNoneS: "เลือกโฟลเดอร์ Certificate4Fun ครั้งเดียว", origNoneS: "โฟลเดอร์ต้นฉบับ: ยังไม่ได้ตั้ง",
       converted: function (n) { return "แปลงจากรูปภาพ " + n + " รูป"; }, imgFail: "อ่านรูปภาพนี้ไม่ได้ ใช้ไฟล์ JPG, PNG หรือ WebP (รูป HEIC จาก iPhone ต้องส่งออกเป็น JPG ก่อน)", mixed: "เลือกไฟล์ PDF หนึ่งไฟล์ หรือรูปภาพหนึ่งรูปขึ้นไป — ไม่ใช่ทั้งสองอย่าง",
       reading: "กำลังอ่านไฟล์ PDF…", pages: function (n) { return n + " หน้า"; },
-      noPdfjs: "อ่านข้อมูลในไฟล์ PDF นี้ไม่ได้ (ไม่มีภาพตัวอย่างอัตโนมัติ) ยังเพิ่มได้ตามปกติ — กรอกรายละเอียดเอง และเลือกภาพตัวอย่างได้ถ้าต้องการ",
+      noPdfjs: "อ่านข้อมูลในไฟล์ PDF นี้ไม่ได้ (ไม่มีภาพตัวอย่างอัตโนมัติ) ยังเพิ่มได้ตามปกติ — กรอกรายละเอียดเอง",
       notPdf: "กรุณาเลือกไฟล์ PDF หรือรูปภาพ (JPG, PNG, WebP)",
-      detailsTitle: "3. รายละเอียด",
+      detailsTitle: "รายละเอียด", gWhat: "คืออะไร", gSource: "มาจากที่ไหน", gWhen: "เมื่อไรและนานแค่ไหน", reqNote: "* จำเป็นต้องกรอก",
       fTitle: "ชื่อหลักสูตร (อังกฤษ)", fTitleHelp: "ชื่อหลักสูตรหรือใบประกาศนียบัตรตามที่ต้องการให้แสดง", fTitleTh: "ชื่อหลักสูตร (ไทย) — ไม่บังคับ",
       fCat: "หมวดหมู่", fCatSuggest: "แนะนำจากชื่อหลักสูตร", fPlatform: "แพลตฟอร์ม / แหล่งที่มา", fPlatformHelp: "ที่ที่คุณเรียน เช่น Coursera, Thai MOOC, SET e-Learning",
-      fIssuer: "หน่วยงานที่ออกให้ — ไม่บังคับ", fIssuerHelp: "มหาวิทยาลัยหรือบริษัทที่ระบุในใบประกาศ เว้นว่างได้ถ้าเหมือนกับแพลตฟอร์ม",
+      fIssuer: "หน่วยงานที่ออกให้", fIssuerHelp: "มหาวิทยาลัยหรือบริษัทที่ระบุในเอกสาร",
       fDate: "วันที่ได้รับ", fDateGuess: "ใช้วันที่ของไฟล์ — โปรดตรวจสอบ", fDateFound: "พบในไฟล์ PDF — โปรดตรวจสอบ",
-      fType: "ประเภท", fTypeHelp: "แบดจ์คือเหรียญดิจิทัล (มักมีลิงก์ตรวจสอบ) ที่เหลือคือใบประกาศนียบัตร", fTypeCert: "ใบประกาศนียบัตร", fTypeBadge: "แบดจ์", fVerify: "ลิงก์ตรวจสอบ — ไม่บังคับ", fVerifyHelp: "หน้าสาธารณะที่ใช้ตรวจสอบแบดจ์ (https://…)", badVerify: "กรอกลิงก์เต็มที่ขึ้นต้นด้วย https://",
+      fType: "ประเภท", fTypeHelp: "แบดจ์คือเหรียญดิจิทัล (มักมีลิงก์ตรวจสอบ) ที่เหลือคือใบประกาศนียบัตร", fTypeCert: "ใบประกาศนียบัตร", fTypeBadge: "แบดจ์", fVerify: "ลิงก์ตรวจสอบ — ไม่บังคับ", fVerifyHelp: "หน้าสาธารณะที่ใช้ตรวจสอบ (https://…)", badVerify: "กรอกลิงก์เต็มที่ขึ้นต้นด้วย https://",
       fHours: "ชั่วโมงเรียน — ไม่บังคับ", fHoursHelp: "กรอกเฉพาะเมื่อใบประกาศระบุไว้ ใส่ทศนิยมได้ (1.5)",
       suggestions: "ข้อความที่พบในไฟล์ PDF — คลิกเพื่อใช้เป็นชื่อหลักสูตร:",
-      thumbOwn: "ใช้ภาพตัวอย่างอื่น", thumbNone: "ไม่มีภาพตัวอย่าง",
+      thumbNone: "ไม่มีภาพตัวอย่าง",
       willSave: "จะบันทึกเป็น",
       req: "จำเป็นต้องกรอก", badDate: "เลือกวันที่ให้ถูกต้อง", badHours: "กรอกตัวเลข หรือเว้นว่าง",
       dup: "มีใบประกาศนียบัตรที่ชื่อและวันที่เดียวกันอยู่แล้ว คลิกอีกครั้งเพื่อเพิ่มต่อไป",
-      cancel: "ยกเลิก", save: "บันทึกใบประกาศนียบัตร", translating: "กำลังแปล…", autoTh: "แปลเป็นภาษาไทยอัตโนมัติ — โปรดตรวจสอบ", saveChoose: "เลือกโฟลเดอร์และบันทึก", saveChanges: "บันทึกการแก้ไข", editBtn: "แก้ไข", editTitle: "แก้ไขใบประกาศนียบัตร", editNote: "แก้ไขเฉพาะรายละเอียด ไฟล์ PDF จะไม่เปลี่ยน", thumbSet: "เลือกภาพตัวอย่างใหม่แล้ว", editNotFound: function (id) { return "ไม่พบใบประกาศนียบัตรหมายเลข " + id + " ใน data/certificates.js"; }, doneEditTitle: "บันทึกการแก้ไขแล้ว", doneEditFolder: "อัปเดตรายละเอียดในโฟลเดอร์เว็บไซต์และในหน้านี้แล้ว", doneEditDl: "อัปเดตในหน้านี้ชั่วคราว หากต้องการเก็บการแก้ไข ให้นำไฟล์ certificates.js ที่ดาวน์โหลดไปวางในโฟลเดอร์ data ของเว็บไซต์ (แทนที่ไฟล์เดิม)", saveAnyway: "บันทึกต่อไป", saving: "กำลังบันทึก…",
+      cancel: "ยกเลิก", save: "บันทึก", translating: "กำลังแปล…", autoTh: "แปลเป็นภาษาไทยอัตโนมัติ — โปรดตรวจสอบ", saveChoose: "เลือกโฟลเดอร์และบันทึก", saveChanges: "บันทึกการแก้ไข", editBtn: "แก้ไข", editTitle: "แก้ไขใบรับรองหรือแบดจ์", editNote: "แก้ไขเฉพาะรายละเอียด ไฟล์ PDF จะไม่เปลี่ยน", thumbSet: "เลือกภาพตัวอย่างใหม่แล้ว", editNotFound: function (id) { return "ไม่พบใบประกาศนียบัตรหมายเลข " + id + " ใน data/certificates.js"; }, doneEditTitle: "บันทึกการแก้ไขแล้ว", doneEditFolder: "อัปเดตรายละเอียดในโฟลเดอร์เว็บไซต์และในหน้านี้แล้ว", doneEditDl: "อัปเดตในหน้านี้ชั่วคราว หากต้องการเก็บการแก้ไข ให้นำไฟล์ certificates.js ที่ดาวน์โหลดไปวางในโฟลเดอร์ data ของเว็บไซต์ (แทนที่ไฟล์เดิม)", saveAnyway: "บันทึกต่อไป", saving: "กำลังบันทึก…",
       delBtn: "ลบ", delAsk: "ลบใบประกาศนียบัตรนี้?", delWhat: "จะถูกนำออกจากเว็บไซต์ และไฟล์ PDF กับภาพตัวอย่างจะถูกลบออกจากโฟลเดอร์เว็บไซต์ ส่วนไฟล์ PDF ต้นฉบับในโฟลเดอร์ของคุณจะไม่ถูกแตะต้อง", delWhatDl: "จะถูกนำออกจากหน้านี้ เนื่องจากเบราว์เซอร์นี้แก้ไขโฟลเดอร์ของคุณไม่ได้ คุณต้องลบไฟล์ของมันด้วยตัวเองภายหลัง", delKeep: "เก็บไว้", delYes: "ยืนยัน ลบ", deleting: "กำลังลบ…", doneDelTitle: "ลบใบประกาศนียบัตรแล้ว", doneDelFolder: "นำออกจากโฟลเดอร์เว็บไซต์และหน้านี้แล้ว รายการก่อนหน้าถูกบันทึกไว้ที่ data/certificates.backup.js", doneDelDl: "นำออกจากหน้านี้ชั่วคราว หากต้องการเก็บการเปลี่ยนแปลง ให้นำไฟล์ certificates.js ที่ดาวน์โหลดไปวางในโฟลเดอร์ data ของเว็บไซต์ (แทนที่ไฟล์เดิม)", doneDelLeft: "ลบไฟล์เหล่านี้ด้วยตัวเอง:", doneDelKept: "ลบไฟล์เหล่านี้โดยอัตโนมัติไม่ได้:", doneDelGit: "หากเว็บไซต์ออนไลน์อยู่แล้ว ให้เปิด GitHub Desktop แล้ว commit และ push เพื่อนำออกจากที่นั่นด้วย",
       doneTitle: "เพิ่มใบประกาศนียบัตรแล้ว", doneFolder: "บันทึกลงโฟลเดอร์เว็บไซต์แล้ว และแสดงในหน้านี้เรียบร้อย", doneFiles: "ไฟล์ที่เขียนลงโฟลเดอร์:",
       doneDownload: "ตอนนี้แสดงในหน้านี้ชั่วคราว หากต้องการเก็บไว้ ให้นำไฟล์ 3 ไฟล์ที่ดาวน์โหลดไปวางในโฟลเดอร์เว็บไซต์:",
@@ -366,9 +368,9 @@
     $("#addDrop").parentNode.hidden = true; $("#addForm").hidden = false;
     $("#fEn").value = rec.en || ""; $("#fTh").value = rec.th || ""; $("#fCat").value = rec.cat || "";
     $("#fDate").value = rec.date || ""; $("#fPlat").value = rec.platform || "";
-    $("#fIss").value = rec.issuer && rec.issuer !== rec.platform ? rec.issuer : "";
+    $("#fIss").value = rec.issuer || rec.platform || "";
     $("#fHrs").value = rec.hours != null ? rec.hours : "";
-    if ($("#fType")) { $("#fType").value = rec.type === "badge" ? "badge" : ""; $("#fVer").value = rec.verify || ""; $("#fVerWrap").hidden = rec.type !== "badge"; }
+    if ($("#fType")) setType(rec.type); if ($("#fVer")) $("#fVer").value = rec.verify || "";
     $("#addDelete").hidden = false; $("#addWill").textContent = T("editNote"); $("#hThumb").textContent = rec.thumb ? "" : T("thumbNone");
     modal.hidden = false; document.body.style.overflow = "hidden"; $("#fEn").focus();
     if (HAS_FS && !dirHandle) restoreP = Promise.all([idb("readonly", function (s) { return s.get("dir"); }), idb("readonly", function (s) { return s.get("orig"); })]).then(function (r) { if (r[0] && !dirHandle) dirHandle = r[0]; if (r[1] && !origHandle) origHandle = r[1]; paintFolder(); });
@@ -384,7 +386,7 @@
       if (!v.th && autoTr) { btn.textContent = T("translating"); v.th = (await translateTh(v.en)) || ""; btn.textContent = T("saving"); }
       var id = st.editing.id, p = pad(id, 3), direct = HAS_FS && dirHandle;
       var patch = { en: v.en, th: v.th || null, cat: v.cat, issuer: v.issuer || v.platform, platform: v.platform, date: v.date, hours: v.hours };
-      if ($("#fType")) { patch.type = v.type || undefined; patch.verify = v.verify || undefined; }
+      if ($("#fType")) patch.type = v.type || undefined; patch.verify = v.verify || undefined;
       var live = {}; Object.keys(patch).forEach(function (k) { live[k] = patch[k]; });
       var thumbPath = "thumbs/" + p + ".jpg", newThumb = st.ownThumb && st.thumb;
       if (newThumb) patch.thumb = thumbPath;
@@ -415,51 +417,57 @@
     }
   }
 
+  function setType(v) {
+    var h = $("#fType"); if (!h) return;
+    h.value = v === "badge" ? "badge" : "";
+    Array.prototype.forEach.call(document.querySelectorAll(".tseg button"), function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-t") === h.value ? "true" : "false"); });
+  }
   function render() {
     $("#addTitle").textContent = T(st.editing ? "editTitle" : "title");
     $("#addX").setAttribute("aria-label", T("close"));
     var b = $("#addBody");
     b.innerHTML =
-      '<section class="add-sec"><h4>' + esc(T("folderTitle")) + '</h4><div id="addFolder"></div></section>' +
+      '<section class="add-sec add-sec-sm"><h4>' + esc(T("folderTitle")) + '</h4><div id="addFolder"></div></section>' +
       '<section class="add-sec"><h4>' + esc(T("fileTitle")) + '</h4>' +
       '<label class="drop" id="addDrop" tabindex="0"><input type="file" id="addFile" accept="application/pdf,.pdf,image/*" multiple class="sr">' +
-      '<span class="drop-in" id="addDropIn"><b>' + esc(T("drop")) + '</b><span class="muted small">' + esc(T("dropSub")) + '</span></span></label></section>' +
-      '<form id="addForm" class="add-sec" novalidate hidden><h4>' + esc(T("detailsTitle")) + '</h4>' +
+      '<span class="drop-in" id="addDropIn"><span class="drop-ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg></span><b class="drop-h">' + esc(T("drop")) + '</b><span class="drop-or">' + esc(T("dropOr")) + '</span><span class="drop-fmt"><i>PDF</i><i>JPG</i><i>PNG</i><i>WebP</i></span><span class="muted small drop-sub">' + esc(T("dropSub")) + '</span></span></label></section>' +
+      '<form id="addForm" class="add-sec" novalidate><h4>' + esc(T("detailsTitle")) + '</h4>' +
+      '<p class="reqnote">' + esc(T("reqNote")) + '</p>' +
       '<div class="fgrid">' +
-      '<div class="field wide"><label for="fEn">' + esc(T("fTitle")) + ' <i class="rq">*</i></label><input id="fEn" type="text" autocomplete="off" required><small class="help">' + esc(T("fTitleHelp")) + '</small><div id="fSug" class="sugs" hidden></div><small class="err" id="eEn" hidden></small></div>' +
-      '<div class="field wide"><label for="fTh">' + esc(T("fTitleTh")) + '</label><input id="fTh" type="text" autocomplete="off"><small class="help" id="hTh" hidden></small></div>' +
-      '<div class="field"><label for="fCat">' + esc(T("fCat")) + ' <i class="rq">*</i></label><select id="fCat" required>' + catOptions("") + '</select><small class="help" id="hCat" hidden>' + esc(T("fCatSuggest")) + '</small><small class="err" id="eCat" hidden></small></div>' +
+      '<h5 class="fsub wide">' + esc(T("gWhat")) + '</h5>' +
+      (BADGES_ON() ? '<div class="field wide"><span class="flabel" id="lType">' + esc(T("fType")) + '</span><div class="seg tseg" role="group" aria-labelledby="lType"><button type="button" data-t="" aria-pressed="true">' + esc(T("fTypeCert")) + '</button><button type="button" data-t="badge" aria-pressed="false">' + esc(T("fTypeBadge")) + '</button></div><input type="hidden" id="fType" value=""><small class="help">' + esc(T("fTypeHelp")) + '</small></div>' : '') +
+      '<div class="field wide"><label for="fEn">' + esc(T("fTitle")) + ' <i class="rq">*</i></label><input id="fEn" type="text" autocomplete="off" required placeholder="e.g. Data Analysis Fundamentals"><small class="help">' + esc(T("fTitleHelp")) + '</small><div id="fSug" class="sugs" hidden></div><small class="err" id="eEn" hidden></small></div>' +
+      '<div class="field wide"><label for="fTh">' + esc(T("fTitleTh")) + '</label><input id="fTh" type="text" autocomplete="off" placeholder="Leave empty to translate automatically"><small class="help" id="hTh" hidden></small></div>' +
+      '<div class="field wide"><label for="fCat">' + esc(T("fCat")) + ' <i class="rq">*</i></label><select id="fCat" required>' + catOptions("") + '</select><small class="help" id="hCat" hidden>' + esc(T("fCatSuggest")) + '</small><small class="err" id="eCat" hidden></small></div>' +
+      '<h5 class="fsub wide">' + esc(T("gSource")) + '</h5>' +
+      '<div class="field"><label for="fPlat">' + esc(T("fPlatform")) + ' <i class="rq">*</i></label><input id="fPlat" type="text" list="dlPlat" autocomplete="off" required placeholder="e.g. Coursera"><datalist id="dlPlat">' + uniq("platform").map(function (x) { return '<option value="' + esc(x) + '">'; }).join("") + '</datalist><small class="help">' + esc(T("fPlatformHelp")) + '</small><small class="err" id="ePlat" hidden></small></div>' +
+      '<div class="field"><label for="fIss">' + esc(T("fIssuer")) + ' <i class="rq">*</i></label><input id="fIss" type="text" list="dlIss" autocomplete="off" required placeholder="e.g. Google"><datalist id="dlIss">' + uniq("issuer").map(function (x) { return '<option value="' + esc(x) + '">'; }).join("") + '</datalist><small class="help">' + esc(T("fIssuerHelp")) + '</small><small class="err" id="eIss" hidden></small></div>' +
+      (true ? '<div class="field wide" id="fVerWrap"><label for="fVer">' + esc(T("fVerify")) + '</label><input id="fVer" type="url" inputmode="url" autocomplete="off" placeholder="https://"><small class="help">' + esc(T("fVerifyHelp")) + '</small><small class="err" id="eVer" hidden></small></div>' : '') +
+      '<h5 class="fsub wide">' + esc(T("gWhen")) + '</h5>' +
       '<div class="field"><label for="fDate">' + esc(T("fDate")) + ' <i class="rq">*</i></label><input id="fDate" type="date" required max="' + new Date().toISOString().slice(0, 10) + '"><small class="help" id="hDate" hidden></small><small class="err" id="eDate" hidden></small></div>' +
-      '<div class="field"><label for="fPlat">' + esc(T("fPlatform")) + ' <i class="rq">*</i></label><input id="fPlat" type="text" list="dlPlat" autocomplete="off" required><datalist id="dlPlat">' + uniq("platform").map(function (x) { return '<option value="' + esc(x) + '">'; }).join("") + '</datalist><small class="help">' + esc(T("fPlatformHelp")) + '</small><small class="err" id="ePlat" hidden></small></div>' +
-      '<div class="field"><label for="fIss">' + esc(T("fIssuer")) + '</label><input id="fIss" type="text" list="dlIss" autocomplete="off"><datalist id="dlIss">' + uniq("issuer").map(function (x) { return '<option value="' + esc(x) + '">'; }).join("") + '</datalist><small class="help">' + esc(T("fIssuerHelp")) + '</small></div>' +
-      '<div class="field"><label for="fHrs">' + esc(T("fHours")) + '</label><input id="fHrs" type="number" min="0" step="0.25" inputmode="decimal"><small class="help">' + esc(T("fHoursHelp")) + '</small><small class="err" id="eHrs" hidden></small></div>' +
-      (BADGES_ON() ? '<div class="field"><label for="fType">' + esc(T("fType")) + '</label><select id="fType"><option value="">' + esc(T("fTypeCert")) + '</option><option value="badge">' + esc(T("fTypeBadge")) + '</option></select><small class="help">' + esc(T("fTypeHelp")) + '</small></div>' +
-        '<div class="field" id="fVerWrap" hidden><label for="fVer">' + esc(T("fVerify")) + '</label><input id="fVer" type="url" inputmode="url" autocomplete="off" placeholder="https://"><small class="help">' + esc(T("fVerifyHelp")) + '</small><small class="err" id="eVer" hidden></small></div>' : '') +
-      '<div class="field"><label for="fThumb">' + esc(T("thumbOwn")) + '</label><input id="fThumb" type="file" accept="image/*"><small class="help" id="hThumb"></small></div>' +
+      '<div class="field"><label for="fHrs">' + esc(T("fHours")) + '</label><input id="fHrs" type="number" min="0" step="0.25" inputmode="decimal" placeholder="e.g. 3"><small class="help">' + esc(T("fHoursHelp")) + '</small><small class="err" id="eHrs" hidden></small></div>' +
       '</div>' +
+      '<p class="help" id="hThumb"></p>' +
       '<p class="muted small" id="addWill"></p><p class="warn" id="addWarn" role="alert" hidden></p>' +
       '<div class="del-box" id="addDelBox" role="alertdialog" aria-labelledby="addDelAsk" hidden></div>' +
       '<div class="add-foot" id="addFoot"><button type="button" class="pill danger" id="addDelete" hidden>' + esc(T("delBtn")) + '</button><button type="button" class="pill" id="addCancel">' + esc(T("cancel")) + '</button><button type="submit" class="pill primary" id="addSave">' + esc(saveLabel()) + '</button></div></form>' +
       '<div id="addDone" hidden></div>';
     paintFolder();
+    if (!st.editing && $("#fDate") && !$("#fDate").value) { var td = new Date(); $("#fDate").value = td.getFullYear() + "-" + pad(td.getMonth() + 1, 2) + "-" + pad(td.getDate(), 2); }
     $("#addFile").addEventListener("change", function (e) { if (e.target.files.length) pickFiles(e.target.files); });
     var drop = $("#addDrop");
     ["dragenter", "dragover"].forEach(function (n) { drop.addEventListener(n, function (e) { e.preventDefault(); drop.classList.add("over"); }); });
     ["dragleave", "drop"].forEach(function (n) { drop.addEventListener(n, function (e) { e.preventDefault(); drop.classList.remove("over"); }); });
     drop.addEventListener("drop", function (e) { var fl = e.dataTransfer && e.dataTransfer.files; if (fl && fl.length) pickFiles(fl); });
     drop.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); $("#addFile").click(); } });
-    if ($("#fType")) $("#fType").addEventListener("change", function () { $("#fVerWrap").hidden = this.value !== "badge"; });
+    Array.prototype.forEach.call(document.querySelectorAll(".tseg button"), function (b) { b.addEventListener("click", function () { setType(b.getAttribute("data-t")); }); });
     $("#addCancel").addEventListener("click", close);
     $("#addDelete").addEventListener("click", askDelete);
     $("#addForm").addEventListener("submit", function (e) { e.preventDefault(); save(); });
     $("#fEn").addEventListener("change", maybeTranslate);
     $("#fTh").addEventListener("input", function () { st.thAuto = false; $("#hTh").hidden = true; });
-    $("#fThumb").addEventListener("change", async function (e) {
-      var f = e.target.files[0]; if (!f) return;
-      try { st.thumb = await imageToThumb(f); st.ownThumb = true; paintDrop(); if (st.editing) $("#hThumb").textContent = T("thumbSet"); } catch (er) {}
-    });
-    var ERR = { fEn: "eEn", fCat: "eCat", fDate: "eDate", fPlat: "ePlat", fHrs: "eHrs" };
-    ["fEn", "fCat", "fDate", "fPlat", "fHrs"].forEach(function (id) { $("#" + id).addEventListener("input", function () { fieldErr(ERR[id], ""); st.dupAck = false; $("#addWarn").hidden = true; $("#addSave").textContent = saveLabel(); updateWill(); }); });
+    var ERR = { fEn: "eEn", fCat: "eCat", fDate: "eDate", fPlat: "ePlat", fIss: "eIss", fHrs: "eHrs" };
+    ["fEn", "fCat", "fDate", "fPlat", "fIss", "fHrs"].forEach(function (id) { $("#" + id).addEventListener("input", function () { fieldErr(ERR[id], ""); st.dupAck = false; $("#addWarn").hidden = true; $("#addSave").textContent = saveLabel(); updateWill(); }); });
   }
 
   function paintFolder() {
@@ -467,11 +475,11 @@
     if (!HAS_FS) { box.innerHTML = '<p class="warn" style="margin:0">' + esc(T("folderNoApi")) + "</p>"; return; }
     var h = "";
     if (dirHandle) {
-      h += '<p class="ok-line">✓ ' + esc(T("folderOk")(dirHandle.name)) + ' <button type="button" class="link" id="addPick">' + esc(T("folderChange")) + "</button></p>";
-      if (origHandle) h += '<p class="ok-line">✓ ' + esc(T("origOk")(origHandle.name)) + ' <button type="button" class="link" id="addPickOrig">' + esc(T("folderChange")) + "</button></p>";
-      else h += '<p class="muted small" style="margin-top:8px">' + esc(T("origNone")) + '</p><button type="button" class="pill" id="addPickOrig">' + esc(T("origPick")) + "</button>";
+      h += '<div class="fl-row"><span class="fl-ok">✓</span><span class="fl-txt">' + esc(T("folderOkS")(dirHandle.name)) + '</span><button type="button" class="link" id="addPick">' + esc(T("folderChange")) + "</button></div>";
+      if (origHandle) h += '<div class="fl-row"><span class="fl-ok">✓</span><span class="fl-txt">' + esc(T("origOkS")(origHandle.name)) + '</span><button type="button" class="link" id="addPickOrig">' + esc(T("folderChange")) + "</button></div>";
+      else h += '<div class="fl-row"><span class="fl-dot">•</span><span class="fl-txt muted">' + esc(T("origNoneS")) + '</span><button type="button" class="link" id="addPickOrig">' + esc(T("origPick")) + "</button></div>";
     } else {
-      h = '<p class="muted small">' + esc(T("folderNone")) + '</p><button type="button" class="pill" id="addPick">' + esc(T("folderPick")) + "</button>";
+      h = '<div class="fl-row"><span class="fl-dot">•</span><span class="fl-txt muted">' + esc(T("folderNoneS")) + '</span><button type="button" class="pill fl-btn" id="addPick">' + esc(T("folderPick")) + "</button></div>";
     }
     box.innerHTML = h;
     $("#addPick") && $("#addPick").addEventListener("click", pickFolder);
@@ -515,7 +523,8 @@
     var inn = $("#addDropIn"); if (!st.file) return;
     var kb = st.file.size > 1048576 ? (st.file.size / 1048576).toFixed(1) + " MB" : Math.max(1, Math.round(st.file.size / 1024)) + " KB";
     var img = st.thumb ? '<img alt="" src="' + URL.createObjectURL(st.thumb) + '">' : '<span class="nothumb">PDF</span>';
-    inn.innerHTML = '<span class="picked">' + img + '<span><b>' + esc(st.file.name) + '</b><span class="muted small">' + kb + (st.info ? " · " + esc(T("pages")(st.info.pages)) : "") + (st.converted ? " · " + esc(T("converted")(st.converted)) : "") + "</span></span></span>";
+    inn.innerHTML = '<span class="picked">' + img + '<span class="pk-info"><span class="pk-ready">✓ ' + esc(T("ready")) + '</span><b>' + esc(st.file.name) + '</b><span class="pk-meta"><i>' + kb + "</i>" + (st.info ? "<i>" + esc(T("pages")(st.info.pages)) + "</i>" : "") + (st.converted ? "<i>" + esc(T("converted")(st.converted)) + "</i>" : "") + '</span></span><span class="pk-change">' + esc(T("change")) + "</span></span>";
+    var dz = $("#addDrop"); if (dz) dz.classList.add("has-file");
     $("#hThumb").textContent = st.thumb ? "" : T("thumbNone");
   }
   function nextId() { return A.data().reduce(function (m, c) { return Math.max(m, c.id); }, 0) + 1; }
@@ -616,6 +625,7 @@
     var drop = $("#addDropIn");
     if (!isPdf) { drop.innerHTML = '<b class="errtxt">' + esc(T("notPdf")) + "</b>"; return; }
     st.file = f; st.info = null; st.thumb = null; st.ownThumb = false;
+    var dz1 = $("#addDrop"); if (dz1) dz1.classList.remove("need"); var w1 = $("#addWarn"); if (w1) w1.hidden = true;
     drop.innerHTML = '<b>' + esc(T("reading")) + "</b>";
     st.buf = await f.arrayBuffer();
     var form = $("#addForm"); form.hidden = false;
@@ -643,7 +653,7 @@
     // known provider mentioned in the PDF
     var low = (text + " " + base).toLowerCase(), hit = null;
     A.data().some(function (c) { var p = c.platform; if (p && p.length > 3 && low.indexOf(p.toLowerCase()) >= 0) { hit = c; return true; } return false; });
-    if (hit) { if (!$("#fPlat").value) $("#fPlat").value = hit.platform; if (!$("#fIss").value && hit.issuer && hit.issuer !== hit.platform) $("#fIss").value = hit.issuer; }
+    if (hit) { if (!$("#fPlat").value) $("#fPlat").value = hit.platform; if (!$("#fIss").value && hit.issuer) $("#fIss").value = hit.issuer; }
     st.catText = text; updateCat(); updateWill();
     $("#fEn").focus(); $("#fEn").select();
   }
@@ -657,16 +667,17 @@
   function collect() {
     var v = { en: $("#fEn").value.trim(), th: $("#fTh").value.trim(), cat: $("#fCat").value, date: $("#fDate").value, platform: $("#fPlat").value.trim(), issuer: $("#fIss").value.trim(), hours: $("#fHrs").value.trim() };
     var ok = true;
-    v.type = $("#fType") && $("#fType").value === "badge" ? "badge" : ""; v.verify = v.type ? ($("#fVer").value.trim()) : "";
+    v.type = $("#fType") && $("#fType").value === "badge" ? "badge" : ""; v.verify = $("#fVer") ? $("#fVer").value.trim() : "";
     if (v.verify && !/^https?:\/\/\S+$/i.test(v.verify)) { fieldErr("eVer", T("badVerify")); ok = false; } else if ($("#eVer")) fieldErr("eVer", "");
     fieldErr("eEn", v.en ? "" : T("req")); if (!v.en) ok = false;
     fieldErr("eCat", v.cat ? "" : T("req")); if (!v.cat) ok = false;
     fieldErr("ePlat", v.platform ? "" : T("req")); if (!v.platform) ok = false;
+    fieldErr("eIss", v.issuer ? "" : T("req")); if (!v.issuer) ok = false;
     var dOk = /^\d{4}-\d{2}-\d{2}$/.test(v.date) && !isNaN(new Date(v.date).getTime());
     fieldErr("eDate", v.date ? (dOk ? "" : T("badDate")) : T("req")); if (!dOk) ok = false;
     var hrs = null;
     if (v.hours !== "") { hrs = Number(v.hours); if (!isFinite(hrs) || hrs < 0) { fieldErr("eHrs", T("badHours")); ok = false; } else fieldErr("eHrs", ""); } else fieldErr("eHrs", "");
-    if (!st.file && !st.editing) ok = false;
+    if (!st.file && !st.editing) { ok = false; var w0 = $("#addWarn"); w0.textContent = T("needFile"); w0.hidden = false; var dz0 = $("#addDrop"); if (dz0) { dz0.classList.add("need"); dz0.focus(); } }
     v.hours = hrs === 0 ? null : hrs;
     return ok ? v : null;
   }
@@ -695,7 +706,7 @@
       } else { id = nextId(); }
       var p = pad(id, 3);
       var rec = { id: id, file: "certificates/" + p + ".pdf", thumb: st.thumb ? "thumbs/" + p + ".jpg" : null, en: v.en, th: v.th || null, cat: v.cat, issuer: v.issuer || v.platform, platform: v.platform, date: v.date, hours: v.hours };
-      if (v.type) { rec.type = v.type; if (v.verify) rec.verify = v.verify; }
+      if (v.type) rec.type = v.type; if (v.verify) rec.verify = v.verify;
       var pdfBlob = new Blob([st.buf], { type: "application/pdf" });
       if (direct) {
         await writeTo(dirHandle, ["certificates", p + ".pdf"], pdfBlob);

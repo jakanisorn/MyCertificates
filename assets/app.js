@@ -527,7 +527,7 @@
     var c = modalList[modalIdx]; if (!c) return;
     $("#mTitle").textContent = title(c);
     $("#mSub").textContent = [isBadge(c) ? t("badgeTag") : "", subtitle(c), c.issuer || c.platform, fmtDate(c.date), c.hours ? fmtHours(c.hours) : "", catName(c.cat)].filter(Boolean).join(" · ");
-    var mv = $("#mVerify"), vu = isBadge(c) ? safeUrl(c.verify) : ""; mv.hidden = !vu; if (vu) mv.href = vu;
+    var mv = $("#mVerify"), vu = safeUrl(c.verify); mv.hidden = !vu; if (vu) mv.href = vu;
     $("#mOpen").href = c.file; $("#mDl").href = c.file; $("#mDl").setAttribute("download", (title(c).replace(/[\\\/:*?"<>|]+/g, "").trim() || "certificate") + ".pdf");
     var body = $("#mBody"); body.innerHTML = "";
     var obj = el("object", { data: c.file + "#view=FitH", type: "application/pdf", "aria-label": title(c) });

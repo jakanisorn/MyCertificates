@@ -450,3 +450,254 @@ button.logo:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .prov-foot-btns{display:flex;gap:8px;justify-content:flex-end}
 .prov-foot .warn{margin:0 0 8px}
 @media (max-width:560px){.prov-erow{grid-template-columns:1fr;gap:4px}.prov-tools{flex-wrap:wrap}.prov-tools input{flex:1 1 100%}}
+
+/* ---- Add a Credentials: cleaner layout ---- */
+.add-body{counter-reset:step;padding:8px 22px 0}
+.add-sec{margin-top:14px;padding:16px 18px;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
+.add-sec h4{display:flex;align-items:center;gap:10px;margin:0 0 12px;font-size:15px}
+.add-sec h4::before{counter-increment:step;content:counter(step);display:grid;place-items:center;flex:none;width:24px;height:24px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-size:12.5px;font-weight:700}
+.drop{padding:26px 18px;border-radius:14px;background:color-mix(in srgb,var(--accent) 5%,var(--surface2));transition:border-color .15s,background .15s}
+.drop:hover,.drop.over,.drop:focus-visible{background:color-mix(in srgb,var(--accent) 10%,var(--surface2))}
+.drop-ic{color:var(--accent);margin-bottom:2px}
+.drop-in b{font-size:15px}
+.reqnote{margin:-6px 0 6px;font-size:12px;color:var(--muted)}
+.fgrid{gap:12px 16px}
+.fsub{grid-column:1/-1;margin:10px 0 0;padding-top:12px;border-top:1px solid var(--line);font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.fsub:first-of-type{margin-top:0;padding-top:0;border-top:0}
+.flabel{font-size:13px;font-weight:600}
+.tseg{margin:0;width:max-content;max-width:100%}
+.field input[aria-invalid="true"]{border-color:#dc2626}
+#addForm .add-foot{position:sticky;bottom:0;margin:16px -18px -16px;padding:12px 18px;background:var(--surface);border-top:1px solid var(--line);border-radius:0 0 16px 16px;z-index:1}
+#hThumb:empty{display:none}
+.add-body{padding-bottom:0}
+#addForm{margin-bottom:0}
+@media (max-width:560px){.add-sec{padding:14px}#addForm .add-foot{margin:14px -14px -14px;padding:10px 14px}}
+
+/* ---- compact save location + nicer file picker ---- */
+.add-sec-sm{padding:10px 14px;margin-top:12px;border-radius:12px;background:var(--surface2)}
+.add-sec-sm h4{margin:0 0 6px;font-size:12.5px;font-weight:650;color:var(--muted);gap:8px}
+.add-sec-sm h4::before{width:18px;height:18px;font-size:10.5px}
+.fl-row{display:flex;align-items:center;gap:8px;font-size:12.5px;line-height:1.35;padding:2px 0;min-width:0}
+.fl-txt{flex:1;min-width:0;overflow-wrap:anywhere}
+.fl-ok{color:#16a34a;font-weight:700;flex:none}
+.fl-dot{color:var(--muted);flex:none}
+.fl-row .link{flex:none;padding:0;font-size:12.5px}
+.fl-btn{flex:none;padding:5px 12px;font-size:12.5px}
+.drop{display:block;padding:28px 18px 22px;border:2px dashed color-mix(in srgb,var(--accent) 45%,var(--line));border-radius:16px}
+.drop-in{gap:6px}
+.drop-ic{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:color-mix(in srgb,var(--accent) 14%,var(--surface));color:var(--accent);margin-bottom:4px}
+.drop-h{font-size:16px}
+.drop-or{font-size:13.5px;color:var(--accent);font-weight:600}
+.drop-fmt{display:flex;gap:6px;justify-content:center;margin:4px 0 2px}
+.drop-fmt i{font-style:normal;font-size:11px;font-weight:700;letter-spacing:.04em;padding:3px 9px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted)}
+.drop-sub{max-width:46ch;margin-top:4px}
+.drop.has-file{border-style:solid;border-color:color-mix(in srgb,#16a34a 55%,var(--line));background:color-mix(in srgb,#16a34a 6%,var(--surface))}
+.drop.has-file .picked{width:100%}
+.pk-info{display:grid;gap:4px;flex:1;min-width:0}
+.pk-ready{font-size:12px;font-weight:700;color:#16a34a}
+.pk-info b{font-size:14.5px;overflow-wrap:anywhere}
+.pk-meta{display:flex;flex-wrap:wrap;gap:6px}
+.pk-meta i{font-style:normal;font-size:11.5px;color:var(--muted);padding:2px 8px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}
+.pk-change{flex:none;align-self:center;font-size:12.5px;font-weight:600;color:var(--accent);border:1px solid var(--line);border-radius:999px;padding:6px 12px;background:var(--surface)}
+.drop.has-file:hover .pk-change{border-color:var(--accent)}
+.picked img{width:104px}
+@media (max-width:560px){.picked{flex-wrap:wrap}.pk-change{margin-left:auto}.picked img{width:80px}}
+
+/* mobile: stop long suggestion chips from widening the form */
+.fgrid>*,.fgrid label{min-width:0}
+.sugs{min-width:0;max-width:100%}
+.add-body{overflow-x:hidden}
+
+/* desktop: file on the left, details on the right */
+@media (min-width:860px){
+  .add-box:has(#addForm:not([hidden])){width:min(1000px,100%)}
+  .add-body:has(#addForm:not([hidden])){display:grid;grid-template-columns:minmax(280px,340px) minmax(0,1fr);column-gap:18px;align-items:start;grid-template-rows:auto 1fr}
+  .add-body:has(#addForm:not([hidden]))>.add-sec-sm{grid-column:1;grid-row:1}
+  .add-body:has(#addForm:not([hidden]))>.add-sec:not(.add-sec-sm):not(form){grid-column:1;grid-row:2;align-self:start}
+  .add-body:has(#addForm:not([hidden]))>#addForm{grid-column:2;grid-row:1 / span 2}
+  .add-body:has(#addForm:not([hidden])) .picked{flex-wrap:wrap}
+  .add-body:has(#addForm:not([hidden])) .picked img{width:100%;max-width:200px}
+  .add-body:has(#addForm:not([hidden])) .pk-change{margin-left:0}
+}
+@media (min-width:860px){
+  .add-body:has(#addForm:not([hidden])) .picked{flex-direction:column;align-items:flex-start;gap:12px}
+  .add-body:has(#addForm:not([hidden])) .pk-info{width:100%;min-width:0}
+  .add-body:has(#addForm:not([hidden])) .pk-info b,.add-body:has(#addForm:not([hidden])) .pk-name{word-break:break-all;white-space:normal}
+  .add-body:has(#addForm:not([hidden])) .pk-meta i,.add-body:has(#addForm:not([hidden])) .pk-meta span{white-space:nowrap}
+}
+
+/* desktop: compact so all 3 steps fit without scrolling */
+@media (min-width:860px){
+  #addForm .reqnote,#addForm .fsub,#addForm .field .help:not([id]){display:none}
+  #addForm .fgrid{gap:10px 14px}
+  #addForm .field:has(#fEn),#addForm .field:has(#fTh),#addForm .field:has(#fCat){grid-column:auto}
+  #addForm .field:has(#fType){grid-column:auto}
+  #addForm .sugs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
+  #addForm .sug{flex:none;max-width:260px}
+  #addForm .field input,#addForm .field select{padding:7px 10px}
+  .add-body:has(#addForm:not([hidden]))>#addForm{padding:14px 18px}
+  .add-body:has(#addForm:not([hidden])) .add-sec-sm,.add-body:has(#addForm:not([hidden]))>.add-sec{margin-top:10px}
+  #addForm .add-foot{margin-top:12px}
+}
+@media (min-width:860px){
+  #addForm .sugs>:not(.sug){flex:none;white-space:nowrap}
+  #addForm .field:has(#fType){order:1}
+  #addForm .field:has(#fCat){order:2}
+  #addForm .field:has(#fEn){order:3}
+  #addForm .field:has(#fTh){order:4}
+  #addForm .field:has(#fPlat),#addForm .field:has(#fIss),#addForm .field:has(#fVer),#addForm .field:has(#fDate),#addForm .field:has(#fHrs){order:5}
+  #addForm .fgrid{row-gap:8px}
+}
+@media (min-width:860px){ #addForm .sugs>:not(.sug){display:none} }
+.drop.need{border-color:#dc2626;background:color-mix(in srgb,#dc2626 6%,var(--surface2))}
+
+/* fixed dialog size: no jump when a file is picked */
+@media (min-width:860px){
+  .modal-box.add-box{height:min(94vh,650px);max-height:94vh}
+  .add-box .add-body{flex:1;min-height:0}
+}
+
+/* extra compact so it fits on short screens */
+@media (min-width:860px){
+  #addForm #hCat,#addForm #hTh,#addForm #hDate,#addForm #addWill{display:none}
+  .add-body:has(#addForm:not([hidden])) .picked img{max-width:150px}
+  .add-body{padding-top:4px}
+  .add-body>.add-sec{padding-top:12px;padding-bottom:12px}
+  .drop{padding:16px 14px}
+  .drop-sub{display:none}
+  #addForm .fgrid{row-gap:6px}
+  #addForm .add-foot{margin-top:8px}
+}
+@media (min-width:860px){
+  .modal-box.add-box{height:min(94vh,680px)}
+  .fl-txt{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .add-sec-sm{padding:8px 12px}
+  .add-sec-sm h4{margin-bottom:4px}
+  .add-body:has(#addForm:not([hidden])) .picked{gap:8px}
+  .add-body:has(#addForm:not([hidden])) .picked img{max-width:130px}
+}
+@media (min-width:860px){
+  .modal-box.add-box{height:min(94vh,570px)}
+  .fl-txt{white-space:normal;overflow:visible;text-overflow:clip}
+}
+
+/* bigger dialog */
+@media (min-width:860px){
+  .add-box:has(#addForm:not([hidden])),.modal-box.add-box{width:min(1160px,96vw)}
+  .modal-box.add-box{height:min(94vh,740px)}
+  .add-body:has(#addForm:not([hidden])){grid-template-columns:minmax(320px,400px) minmax(0,1fr);column-gap:22px;padding-left:26px;padding-right:26px}
+  .add-body:has(#addForm:not([hidden])) .picked img{max-width:220px}
+  .drop{padding:30px 16px}
+  .drop-sub{display:block}
+  #addForm .field input,#addForm .field select{padding:10px 12px;font-size:15px}
+  #addForm .fgrid{row-gap:14px}
+  #addForm .field label{font-size:13.5px}
+  .add-body:has(#addForm:not([hidden]))>#addForm{padding:18px 22px}
+}
+@media (min-width:860px){
+  .modal-box.add-box{height:min(94vh,700px)}
+  .add-body:has(#addForm:not([hidden])){padding-bottom:18px;grid-template-rows:auto 1fr}
+  .add-body:has(#addForm:not([hidden]))>#addForm{align-self:stretch;display:flex;flex-direction:column}
+  #addForm .fgrid{flex:1;align-content:space-evenly}
+  .add-body:has(#addForm:not([hidden]))>.add-sec:not(.add-sec-sm):not(form){align-self:stretch;display:flex;flex-direction:column}
+  .add-body:has(#addForm:not([hidden]))>.add-sec:not(.add-sec-sm):not(form) .drop{flex:1;display:flex;flex-direction:column;justify-content:center}
+  #addForm .add-foot{margin-bottom:0}
+}
+
+/* no visible scrollbars in the Add dialog on desktop */
+@media (min-width:860px){
+  .add-box .add-body{overflow:hidden}
+  #addForm .sugs{scrollbar-width:none;-ms-overflow-style:none;padding-bottom:0}
+  #addForm .sugs::-webkit-scrollbar{display:none}
+  .add-box *{scrollbar-width:none}
+  .add-box *::-webkit-scrollbar{display:none}
+}
+@media (min-width:860px){
+  #addForm .sugs{flex-wrap:wrap;overflow:hidden;max-height:62px;align-content:flex-start}
+  #addForm .sug{max-width:100%}
+}
+@media (min-width:860px) and (max-height:700px){ #addForm .sugs{max-height:32px} }
+
+/* file card: preview fills the card, centered */
+@media (min-width:860px){
+  .add-body:has(#addForm:not([hidden])) .picked{flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;width:100%}
+  .add-body:has(#addForm:not([hidden])) .picked img{width:100%;max-width:100%;max-height:230px;object-fit:contain;border-radius:8px}
+  .add-body:has(#addForm:not([hidden])) .pk-info{display:flex;flex-direction:column;align-items:center;gap:4px;width:100%}
+  .add-body:has(#addForm:not([hidden])) .pk-meta{display:flex;gap:6px;justify-content:center}
+  .add-body:has(#addForm:not([hidden])) .pk-info b{font-size:15px;word-break:break-all}
+  .drop.has-file{padding:18px 16px}
+}
+@media (min-width:860px) and (max-height:700px){
+  .add-body:has(#addForm:not([hidden])) .picked img{max-height:160px}
+}
+
+/* polished "file chosen" state */
+.drop.has-file{background:var(--surface2);border:1px solid var(--line);box-shadow:none}
+.drop.has-file:hover{border-color:var(--accent)}
+.drop.has-file .picked img{border:1px solid var(--line);border-radius:10px;box-shadow:0 6px 18px rgba(20,20,60,.14);background:#fff}
+.drop.has-file .pk-ready{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:999px;background:color-mix(in srgb,#16a34a 14%,var(--surface));color:#15803d;font-size:12px;font-weight:700}
+.drop.has-file .pk-info b{font-size:15px;margin-top:2px}
+.drop.has-file .pk-meta i{background:var(--surface);border:1px solid var(--line);color:var(--muted);font-style:normal;font-size:12px;padding:2px 9px;border-radius:999px}
+.drop.has-file .pk-change{display:inline-flex;align-items:center;gap:6px;width:100%;justify-content:center;margin:2px 0 0;padding:9px 12px;border-radius:10px;border:1px dashed color-mix(in srgb,var(--accent) 55%,var(--line));background:transparent;color:var(--accent);font-weight:650}
+.drop.has-file .pk-change::before{content:"↻"}
+.drop.has-file:hover .pk-change{background:color-mix(in srgb,var(--accent) 8%,transparent);border-style:solid}
+@media (min-width:860px){
+  .add-body:has(#addForm:not([hidden])) .picked{gap:12px}
+  .add-body:has(#addForm:not([hidden])) .pk-info{gap:6px}
+}
+
+/* no white/filled background around the chosen file */
+.drop.has-file{background:transparent;border-color:transparent}
+.drop.has-file:hover{border-color:transparent}
+.drop.has-file .picked img{background:transparent;box-shadow:none;border:1px solid var(--line)}
+.drop.has-file .pk-meta i{background:transparent}
+.add-body:has(#addForm:not([hidden]))>.add-sec:not(.add-sec-sm):not(form):has(.drop.has-file){background:transparent}
+.add-sec:has(.drop.has-file){background:transparent}
+
+/* step 2 hugs the chosen file */
+@media (min-width:860px){
+  .add-body:has(#addForm:not([hidden]))>.add-sec:has(.drop.has-file){align-self:start}
+  .add-body:has(#addForm:not([hidden]))>.add-sec:has(.drop.has-file) .drop{flex:none;padding:14px}
+  .add-body:has(#addForm:not([hidden]))>.add-sec:has(.drop.has-file) .picked img{max-height:210px;width:auto;max-width:100%;margin:0 auto}
+}
+.drop.has-file{background:color-mix(in srgb,var(--accent) 5%,var(--surface));border:1px solid var(--line)}
+.add-sec:has(.drop.has-file){background:var(--surface)}
+.drop.has-file .picked img{border-radius:8px;box-shadow:0 4px 14px rgba(20,20,60,.12)}
+@media (min-width:860px) and (max-height:700px){
+  .add-body:has(#addForm:not([hidden]))>.add-sec:has(.drop.has-file) .picked img{max-height:150px}
+}
+@media (min-width:860px){ #addForm .field:has(#fVer){order:6} }
+@media (min-width:860px){
+  #addForm .fgrid{grid-template-columns:repeat(6,minmax(0,1fr))}
+  #addForm .fgrid>.field{grid-column:span 3}
+  #addForm .field:has(#fDate){grid-column:span 2;order:6}
+  #addForm .field:has(#fHrs){grid-column:span 1;order:6}
+  #addForm .field:has(#fVer){grid-column:span 3;order:6}
+  #addForm .fgrid>.fsub{grid-column:1/-1}
+}
+@media (min-width:860px){
+  #addForm .field:has(#fType),#addForm .field:has(#fCat),#addForm .field:has(#fEn),#addForm .field:has(#fTh){grid-column:span 3}
+  #addForm .field:has(#fDate){grid-column:span 2;order:6}
+  #addForm .field:has(#fHrs){grid-column:span 2;order:7}
+  #addForm .field:has(#fVer){grid-column:span 2;order:8}
+}
+
+/* hidden sections must stay hidden (display rules above override [hidden]) */
+.add-sec[hidden],.add-body>.add-sec[hidden]{display:none!important}
+/* edit mode: no file picker, so use one clean column */
+.add-body:has(.add-sec[hidden]):has(#addForm:not([hidden])){display:block}
+@media (min-width:860px){
+  .add-box:has(.add-body .add-sec[hidden]):has(#addForm:not([hidden])){width:min(760px,96vw)}
+  .modal-box.add-box:has(.add-body .add-sec[hidden]):has(#addForm:not([hidden])){height:auto;max-height:94vh}
+  .add-body:has(.add-sec[hidden])>#addForm{display:block;margin-top:12px}
+  .add-body:has(.add-sec[hidden]) #addForm .fgrid{align-content:start}
+  .add-body:has(.add-sec[hidden]){padding-bottom:18px;overflow:auto}
+}
+
+/* Add dialog polish */
+.tseg button[data-t=""]::before{content:"🎓 "}
+.tseg button[data-t="badge"]::before{content:"🏅 "}
+#addForm .field input::placeholder{color:color-mix(in srgb,var(--muted) 70%,transparent);font-size:.92em}
+#addForm .field input:focus,#addForm .field select:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 18%,transparent)}
+#addForm .field label{display:flex;align-items:center;gap:4px}
+.add-foot .pill.primary{box-shadow:0 4px 12px color-mix(in srgb,var(--accent) 35%,transparent)}
